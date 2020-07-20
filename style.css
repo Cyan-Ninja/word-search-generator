@@ -8,6 +8,11 @@
 	font-family: Arial, sans-serif;
 }
 
+#title {
+	font-size: 1.5em;
+	text-align: center;
+}
+
 #wrapper {
 	display: flex;
 	flex-direction: column;
