@@ -47,11 +47,13 @@ textarea {
 }
 
 input {
+	width: 50vw;
 	border: solid 0.25vw #ccc;
 	background-color: #ddd;
 }
 
 button {
+width: 25vw;
 	border: solid 0.25vw #ccc;
 	background-color: #ddd;
 }

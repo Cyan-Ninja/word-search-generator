@@ -9,32 +9,29 @@
 	<body>
 		<h1 id="title">Word Search Generator</h1>
 		<div id="wrapper">
-			<div id="words">
-				<h1>Word List</h1>
-				<textarea rows="10" cols="100" placeholder="
+			<div>
+			<h1>Word List</h1>
+			<textarea id="wordList" rows="10" cols="100" placeholder="
 
 
 
 
 List or copy/paste your word list here, separated by breaklines."></textarea>
+			<div>
+					<input type="text" id="setWidth" placeholder="Enter Width">
+					<button type="button" name="button" onclick="setWidth()">Set Width</button>
 			</div>
-			<div id="options">
-				<h1>Options</h1>
-				<div id="sizeOptions">
-					<div>
-							<input type="text" id="setWidth" placeholder="Enter Width">
-							<button type="button" name="button" onclick="setWidth()">Set Width</button>
-					</div>
-					<div>
-						<input type="text" id="setHeight" placeholder="Enter Height">
-						<button type="button" name="button" onclick="setHeight()">Set Height</button>
-					</div>
-					<button type="button" id="generatePuzzle">Regenerate Puzzle</button><br>
-					<a href="" download="Image.png" class="download">[Download Image]</a><br>
-					<a href="" download="AnsweredImage.png" class="download">[Download Answered Image]</a><br>
-					<button type="button" id="copyText">Copy Text</button>
-				</div>
+			<div>
+				<input type="text" id="setHeight" placeholder="Enter Height">
+				<button type="button" name="button" onclick="setHeight()">Set Height</button>
 			</div>
+			<input type="text" id="puzzleTitle" placeholder="Enter Header (Empty for None)">
+			<button type="button" name="button" onclick="setHeight()">Set Title</button><br><br>
+			<button type="button" id="generatePuzzle">Regenerate Puzzle</button><br><br>
+			<a href="" download="Image.png" class="download">[Download Image]</a><br>
+			<a href="" download="AnsweredImage.png" class="download">[Download Answered Image]</a><br>
+			<button type="button" id="copyText">Copy Text</button>
+		</div>
 			<canvas id="canvas" width="1080px" height="1080px;">Your browser doesn't support the canvas tag, please update to a newer browser.</canvas>
 		</div>
 		<script src="script.js" charset="utf-8" type="text/javascript"></script>
