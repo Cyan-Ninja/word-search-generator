@@ -5,7 +5,6 @@
 		<title>Word Search Generator</title>
 		<meta name=viewport content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="style.css">
-		<script src="script.js" charset="utf-8" type="text/javascript"></script>
 	</head>
 	<body>
 		<h1 id="title">Word Search Generator</h1>
@@ -21,12 +20,12 @@
 					<button type="button" name="button" onclick="deleteWord();">Delete Word</button>
 				</div>
 				<div>
-					<input type="checkbox" onclick="alert('Allow Duplicate Words Box (Changed)');"> Allow Duplicate Words
+					<input type="checkbox" onclick="alert('Toggled Allow Duplicate Words Checkbox');"> Allow Duplicate Words
 				</div>
 				<div>
 					<h2>Word List:</h2>
 					<ul id="wordList">
-						<li></li>
+None, add some!
 					</ul>
 				</div>
 			</div>
@@ -47,7 +46,8 @@
 					<button type="button" id="copyText">Copy Text</button>
 				</div>
 			</div>
-			<canvas id="canvas" style="width:50vw;height:50vw;">Your browser doesn't support the canvas tag, please update to a newer browser.</canvas>
+			<canvas id="canvas" width="1080px" height="1080px;">Your browser doesn't support the canvas tag, please update to a newer browser.</canvas>
 		</div>
+		<script src="script.js" charset="utf-8" type="text/javascript"></script>
 	</body>
 </html>

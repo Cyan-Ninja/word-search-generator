@@ -2,10 +2,11 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	background-color: #fafafa;
+	background-color: #eee;
 	color: #111;
 	font-size: 1em;
 	font-family: Arial, sans-serif;
+	text-align: center;
 }
 
 #title {
@@ -14,15 +15,15 @@
 }
 
 #wrapper {
+	margin: 1vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: flex-start;
+	align-items: stretch;
 }
 
 #wrapper div {
 	margin: 1vw;
-	width: 50vw;
 }
 
 #wrapper div button {
@@ -37,4 +38,11 @@ h1 {
 h2 {
 	font-weight: normal;
 	text-decoration: underline;
+}
+
+canvas {
+	align-self: center;
+	width: 50vw;
+	height: 50vw;
+	float: right;
 }
