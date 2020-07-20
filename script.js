@@ -24,6 +24,6 @@ var ctx = c.getContext("2d");
 ctx.fillStyle = "#fff";
 ctx.fillRect(0, 0, c.width, c.height);
 	// Example Text
-ctx.fillStyle = "#111";
+ctx.fillStyle = "#000";
 ctx.font = "64px Arial";
 ctx.fillText("I will be your image!", 256, 512);
