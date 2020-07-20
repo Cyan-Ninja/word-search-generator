@@ -8,6 +8,38 @@
 		<script src="script.js" charset="utf-8" type="text/javascript"></script>
 	</head>
 	<body>
-
+		<div id="wrapper">
+			<div id="words">
+				<h1>Word List</h1>
+				<div id="addWord">
+					Add Word Section
+				</div>
+				<div id="removeWord">
+					Remove Word Section
+				</div>
+				<div id="dupeWordCheck">
+					Duplicate Word Check
+				</div>
+				<div id="wordList">
+					Word List
+				</div>
+			</div>
+			<div id="options">
+				<h1>Options</h1>
+				<div id="sizeOption">
+					<div id="sizeWidth">
+						<h2>Width:</h2>
+					</div>
+					<div id="sizeHeight">
+						<h2>Height:</h2>
+					</div>
+					<button type="button" id="generatePuzzle">Generate Puzzle</button><br>
+					<a download="" class="download">Download Image</a><br>
+					<a download="" class="download">Download Answered Image</a><br>
+					<button type="button" id="copyText">Copy Text</button>
+				</div>
+			</div>
+			<canvas id="canvas" style="width:50vw;height:50vw;">Your browser doesn't support the canvas tag, please update to a newer browser.</canvas>
+		</div>
 	</body>
 </html>
