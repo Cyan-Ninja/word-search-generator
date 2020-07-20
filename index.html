@@ -18,21 +18,18 @@
 
 List or copy/paste your word list here, separated by breaklines."></textarea>
 			<div>
-					<input type="text" id="setWidth" placeholder="Enter Width">
-					<button type="button" name="button" onclick="setWidth()">Set Width</button>
+					<input type="text" id="setWidth" placeholder="Enter Width (Default: 20)">
 			</div>
 			<div>
-				<input type="text" id="setHeight" placeholder="Enter Height">
-				<button type="button" name="button" onclick="setHeight()">Set Height</button>
+				<input type="text" id="setHeight" placeholder="Enter Height (Default: 20)">
 			</div>
-			<input type="text" id="puzzleTitle" placeholder="Enter Header (Empty for None)">
-			<button type="button" name="button" onclick="setHeight()">Set Title</button><br><br>
-			<button type="button" id="generatePuzzle">Regenerate Puzzle</button><br><br>
+			<input type="text" id="puzzleTitle" placeholder="Enter Header (Default: Empty)"><br><br>
+			<button type="button" id="generatePuzzle" onclick="generatePuzzle();">Generate Puzzle</button><br><br>
 			<a href="" download="Image.png" class="download">[Download Image]</a><br>
 			<a href="" download="AnsweredImage.png" class="download">[Download Answered Image]</a><br>
 			<button type="button" id="copyText">Copy Text</button>
 		</div>
-			<canvas id="canvas" width="1080px" height="1080px;">Your browser doesn't support the canvas tag, please update to a newer browser.</canvas>
+			<canvas id="canvas" width="1000px" height="1100px;">Your browser doesn't support the canvas tag, please update to a newer browser.</canvas>
 		</div>
 		<script src="script.js" charset="utf-8" type="text/javascript"></script>
 	</body>
