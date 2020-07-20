@@ -11,8 +11,9 @@ var puzzleHeight = 20;
 function setWidth() {
 	let value = parseInt(document.getElementById("setWidth").value);
 	console.log("Width Value: " + value);
-	if (value = "")
-	puzzleWidth = document.getElementById("setWidth").value;
+	if (value > 0) {
+		puzzleWidth = value;
+	}
 	console.log("Puzzle Width: " + puzzleWidth);
 	console.log("Puzzle Height: " + puzzleHeight);
 }
