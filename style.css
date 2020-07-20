@@ -40,6 +40,22 @@ h2 {
 	text-decoration: underline;
 }
 
+textarea {
+	border: solid 0.25vw #ccc;
+	background-color: #ddd;
+	width: 90vw;
+}
+
+input {
+	border: solid 0.25vw #ccc;
+	background-color: #ddd;
+}
+
+button {
+	border: solid 0.25vw #ccc;
+	background-color: #ddd;
+}
+
 canvas {
 	align-self: center;
 	width: 50vw;

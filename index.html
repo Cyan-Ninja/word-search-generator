@@ -11,27 +11,16 @@
 		<div id="wrapper">
 			<div id="words">
 				<h1>Word List</h1>
-				<div>
-					<input type="text" id="addWord" placeholder="Enter Word">
-					<button type="button" name="button" onclick="addWord();">Add Word</button>
-				</div>
-				<div>
-					<input type="text" id="deleteWord" placeholder="Enter Word">
-					<button type="button" name="button" onclick="deleteWord();">Delete Word</button>
-				</div>
-				<div>
-					<input type="checkbox" onclick="alert('Toggled Allow Duplicate Words Checkbox');"> Allow Duplicate Words
-				</div>
-				<div>
-					<h2>Word List:</h2>
-					<ul id="wordList">
-None, add some!
-					</ul>
-				</div>
+				<textarea rows="10" cols="100" placeholder="
+
+
+
+
+List or copy/paste your word list here, separated by breaklines."></textarea>
 			</div>
 			<div id="options">
 				<h1>Options</h1>
-				<div id="sizeOption">
+				<div id="sizeOptions">
 					<div>
 							<input type="text" id="setWidth" placeholder="Enter Width">
 							<button type="button" name="button" onclick="setWidth()">Set Width</button>
@@ -40,7 +29,7 @@ None, add some!
 						<input type="text" id="setHeight" placeholder="Enter Height">
 						<button type="button" name="button" onclick="setHeight()">Set Height</button>
 					</div>
-					<button type="button" id="generatePuzzle">Generate Puzzle</button><br>
+					<button type="button" id="generatePuzzle">Regenerate Puzzle</button><br>
 					<a href="" download="Image.png" class="download">[Download Image]</a><br>
 					<a href="" download="AnsweredImage.png" class="download">[Download Answered Image]</a><br>
 					<button type="button" id="copyText">Copy Text</button>
