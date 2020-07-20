@@ -1,4 +1,4 @@
-// Main Script (JavaScript)
+/* Main Webapp Script (JavaScript) */
 // Adding, Removing, and Listing Words
 
 // Set Puzzle Width & Height
@@ -14,4 +14,6 @@ function setHeight() {
 	console.log("Puzzle Width: " + puzzleWidth);
 	console.log("Puzzle Height: " + puzzleHeight);
 }
-// Initialise Canvas
+// Puzzle Generation Algorithm
+
+// Show on Canvas
