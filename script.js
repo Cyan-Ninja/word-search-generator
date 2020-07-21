@@ -1,9 +1,11 @@
 /* Main Webapp Script (JavaScript) */
 // Set Word list
-var wordListUncut = "";
 var wordList = [];
 function setWordList() {
-
+	let wordListUncut = document.getElementById("wordList").value;
+	console.log(wordListUncut);
+	wordList = wordListUncut.split("\n");
+	console.log(wordList);
 }
 // Set Puzzle Width & Height
 var puzzleWidth = 20;
