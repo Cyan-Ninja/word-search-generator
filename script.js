@@ -3,7 +3,7 @@
 var wordList = [];
 function setWordList() {
 	let wordListUncut = document.getElementById("wordList").value;
-	console.log("Set Word List Uncut: '" + wordListUncut + "'");
+	//console.log("Set Word List Uncut: '" + wordListUncut + "'");
 	wordList = wordListUncut.split("\n");
 	console.log("Set Word List: '" + wordList + "'");
 }
