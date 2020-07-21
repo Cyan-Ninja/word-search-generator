@@ -8,25 +8,33 @@ function setWordList() {
 // Set Puzzle Width & Height
 var puzzleWidth = 20;
 var puzzleHeight = 20;
-function setWidth() {
+function setSize() {
 	let value = parseInt(document.getElementById("setWidth").value);
-	console.log("Width Value: " + value);
 	if (value > 0) {
 		puzzleWidth = value;
+	} else {
+		puzzleWidth = 20;
 	}
-	console.log("Puzzle Width: " + puzzleWidth);
-	console.log("Puzzle Height: " + puzzleHeight);
+	value = parseInt(document.getElementById("setHeight").value);
+	if (value > 0) {
+		puzzleHeight = value;
+	} else {
+		puzzleHeight = 20;
+	}
+	console.log("Puzzle Width Set: " + puzzleWidth);
+	console.log("Puzzle Height Set: " + puzzleHeight);
 }
-function setHeight() {
-	puzzleHeight = document.getElementById("setHeight").value;
-	console.log("Puzzle Width: " + puzzleWidth);
-	console.log("Puzzle Height: " + puzzleHeight);
-}
-// Set PuzzleTitle
+// Set Puzzle Title
 var puzzleTitle = "";
 function setTitle() {
-	puzzleTitle = document.getElementById("puzzleTitle").value;
-	console.log("Puzzle Title: " + puzzleTitle);
+	puzzleTitle = parseInt(document.getElementById("puzzleTitle").value);
+	console.log("Puzzle Title Set: " + puzzleTitle);
+}
+// Mark Display Image Button
+var markImage = false;
+function markImageButton() {
+	markImage = !markImage;
+	console.log("Mark Image Set: " + markImage);
 }
 // Puzzle Generation Algorithm
 function generatePuzzle() {
