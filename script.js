@@ -44,6 +44,43 @@ function generatePuzzle() {
 	setWordList();
 	setSize();
 	setTitle();
+
+	/* List of Steps */
+	/*
+		Create Array With Objects With [X: n, Y: n, L: n] For Coordinates + Filled Letter
+		For Each Word {
+			While (Until Correct Coords+Direction is Found & Set or Too many Tries) {
+				Choose Random Coordinate
+
+				var directionsAvailable = [];
+				Check If Can Go Direction-E
+					Add To directionsAvailable if True
+				Check If Can Go Direction-SE
+					Add To directionsAvailable if True
+				Check If Can Go Direction-S
+					Add To directionsAvailable if True
+				Check If Can Go Direction-SW
+					Add To directionsAvailable if True
+				Check If Can Go Direction-W
+					Add To directionsAvailable if True
+				Check If Can Go Direction-NW
+					Add To directionsAvailable if True
+				Check If Can Go Direction-N
+					Add To directionsAvailable if True
+				Check If Can Go Direction-NE
+					Add To directionsAvailable if True
+
+				While (directionsAvailable != []) {
+					Choose An Available Direction From The Array
+					Test Each Letter The Word Would Take Up to See if It Fails
+						Succeeds: Add Those Letters To The First Array of All Coordinates and Letter Fills & Break From Current Main EachWord Loop
+						Fails: Remove This Direction From The Array & The While Loop Loops Again, But Without This Direction
+				}
+				// If The Code Reaches Here, It Can't Find Any Correct Direction // It Will Loop The Coordinate Search Loop
+				// NOTE: I May Implement A Feature That Will Stop The Whole Generation & Alert That It Failed to Find Any Possible Placement For A Word In This Run
+			}
+		}
+	*/
 }
 // Canvas
 	// Context
