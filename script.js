@@ -44,6 +44,14 @@ function generatePuzzle() {
 	setWordList();
 	setSize();
 	setTitle();
+	// Create Array With Coordinates and Letter Fills
+	var puzzleTable = [];
+	for (var x = 0; x < puzzleWidth; x++) {
+		for (var y = 0; y < puzzleHeight; y++) {
+			puzzleTable.push({x: x, y: y, l: ""});
+		}
+	}
+	console.log(puzzleTable);
 
 	/* List of Steps */
 	/*
