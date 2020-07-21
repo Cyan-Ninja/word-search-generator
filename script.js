@@ -3,9 +3,9 @@
 var wordList = [];
 function setWordList() {
 	let wordListUncut = document.getElementById("wordList").value;
-	console.log(wordListUncut);
+	console.log("Set Word List Uncut: '" + wordListUncut + "'");
 	wordList = wordListUncut.split("\n");
-	console.log(wordList);
+	console.log("Set Word List: '" + wordList + "'");
 }
 // Set Puzzle Width & Height
 var puzzleWidth = 20;
@@ -23,26 +23,29 @@ function setSize() {
 	} else {
 		puzzleHeight = 20;
 	}
-	console.log("Puzzle Width Set: " + puzzleWidth);
-	console.log("Puzzle Height Set: " + puzzleHeight);
+	console.log("Set Puzzle Width: '" + puzzleWidth + "'");
+	console.log("Set Puzzle Height: '" + puzzleHeight + "'");
 }
 // Set Puzzle Title
 var puzzleTitle = "";
 function setTitle() {
-	puzzleTitle = parseInt(document.getElementById("puzzleTitle").value);
-	console.log("Puzzle Title Set: " + puzzleTitle);
+	puzzleTitle = document.getElementById("puzzleTitle").value;
+	console.log("Set Puzzle Title: '" + puzzleTitle + "'");
 }
 // Mark Display Image Button
 var markImage = false;
 function markImageButton() {
 	markImage = !markImage;
-	console.log("Mark Image Set: " + markImage);
+	console.log("Set Mark Image: '" + markImage + "'");
 }
 // Puzzle Generation Algorithm
 function generatePuzzle() {
-
+	// Run All Set Commands
+	setWordList();
+	setSize();
+	setTitle();
 }
-// Show on Canvas
+// Canvas
 	// Context
 var c = document.getElementById("canvas");
 var ctx = c.getContext("2d");
