@@ -28,14 +28,14 @@ function setSize() {
 	} else {
 		puzzleHeight = 20;
 	}
-	console.log("Set Puzzle Width: '" + puzzleWidth + "'");
-	console.log("Set Puzzle Height: '" + puzzleHeight + "'");
+	//console.log("Set Puzzle Width: '" + puzzleWidth + "'");
+	//console.log("Set Puzzle Height: '" + puzzleHeight + "'");
 }
 // Set Puzzle Title
 var puzzleTitle = "";
 function setTitle() {
 	puzzleTitle = document.getElementById("puzzleTitle").value;
-	console.log("Set Puzzle Title: '" + puzzleTitle + "'");
+	//console.log("Set Puzzle Title: '" + puzzleTitle + "'");
 }
 // Mark Display Image Button
 var markImage = false;
@@ -64,12 +64,12 @@ function generatePuzzle() {
 	console.log(puzzleTable);
 
 	// For Each Word, Search and Test
-	for (var i = 0; i < wordList.length; i++) {
+	for (var i = 0; i < wordList.length - 1; i++) {
 		var word = wordList[i]; // Whole Word String
 		console.log("Testing: '" + word + "' Length: '" + word.length + "'");
 
 		// While Loop Choosing Coordinates Each Time
-		let found = false; // True/False if Succeeded
+		var found = false; // True/False if Succeeded
 		while (!found) {
 			coordArrayItem = puzzleTable[Math.floor(Math.random() * puzzleTable.length)]; // Random Array Item For Coordinates
 			console.log(coordArrayItem);
@@ -181,14 +181,14 @@ function generatePuzzle() {
 				}
 			}
 			var isOkay = true;
-			console.log("Letters: '" + letters + "'");
+			//console.log("Letters: '" + letters + "'");
 			for (var i = 0; i < letters.length; i++) {
 				if (testLetter(letters[i], goX * word.length + originX, goY * word.length + originY) != true) {
 					isOkay = false;
 				}
 			}
 			// Actually Fill If All Letters Are Okay
-			console.log("Is Okay: '" + isOkay + "'");
+			console.log("Is Still Okay: '" + isOkay + "'");
 /*			if (isOkay) {
 				for (var i = 0; i < letters.length; i++) {
 					if (testLetter(letters[i], goX * word.length + originX, goY * word.length + originY) != true) {
