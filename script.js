@@ -189,13 +189,13 @@ function generatePuzzle() {
 			}
 			// Actually Fill If All Letters Are Okay
 			console.log("Is Okay: '" + isOkay + "'");
-			if (isOkay) {
+/*			if (isOkay) {
 				for (var i = 0; i < letters.length; i++) {
 					if (testLetter(letters[i], goX * word.length + originX, goY * word.length + originY) != true) {
 						console.log("All Good");
 					}
 				}
-			}
+			}*/ // Broken
 
 			found = true; // TEMP: This is just so the browser doesn't freeze on the half-developed loop.
 		}
