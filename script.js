@@ -134,8 +134,36 @@ function generatePuzzle() {
 			console.log("Directions: '" + directions + "' Chosen: '" + direction + "'");
 
 			// Check If The Tiles it Will Take Up Won't Fit With That Word
-
-
+			var goX = 0;
+			var goY = 0;
+			if (direction = "N") {
+				goY = 1;
+			}
+			if (direction = "E") {
+				goX = 1;
+			}
+			if (direction = "W") {
+				goX = -1;
+			}
+			if (direction = "S") {
+				goY = -1;
+			}
+			if (direction = "NE") {
+				goY = 1;
+				goX = 1;
+			}
+			if (direction = "NW") {
+				goY = 1;
+				goX = -1;
+			}
+			if (direction = "SE") {
+				goY = -1;
+				goX = 1;
+			}
+			if (direction = "SW") {
+				goY = -1;
+				goX = -1;
+			}
 			found = true; // TEMP: This is just so the browser doesn't freeze on the half-developed loop.
 		}
 	}
