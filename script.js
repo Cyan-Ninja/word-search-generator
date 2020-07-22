@@ -197,7 +197,9 @@ function generatePuzzle() {
 				}
 			}*/ // Broken
 
-			found = true; // TEMP: This is just so the browser doesn't freeze on the half-developed loop.
+			// TEMP: This is just so the browser doesn't freeze on the half-developed loop.
+			found = true;
+			break;
 		}
 	}
 
