@@ -5,7 +5,9 @@ function setWordList() {
 	let wordListUncut = document.getElementById("wordList").value;
 	//console.log("Set Word List Uncut: '" + wordListUncut + "'");
 	wordList = wordListUncut.split("\n");
-	console.log("Set Word List: '" + wordList + "'");
+	for (var i = 0; i < wordList.length; i++) {
+		wordList[i] = wordList[i].replaceAll("[^a-zA-Z]", "").toUpperCase();
+	}
 }
 // Set Puzzle Width & Height
 var puzzleWidth = 20;
@@ -72,6 +74,7 @@ function generatePuzzle() {
 			let originY = coordArrayItem.y;
 
 			// Test Which Directions It Can Go
+			console.log(word.length);
 				// Directions: N
 				// HERE
 				// Directions: E
