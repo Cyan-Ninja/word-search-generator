@@ -164,6 +164,21 @@ function generatePuzzle() {
 				goY = -1;
 				goX = -1;
 			}
+				// Get Word Letters and Make Array Of Them + Position
+			var letters = word.split("");
+					// Function to Test Letter:Coord Fills Against Original Puzzle Table
+			function testLetter() {
+				// Function To Find Item From Original Puzzle Table With Coordinates
+				function findPuzzleCell() {
+					
+				}
+			}
+			var isOkay = true;
+			console.log("Letters: '" + letters + "'");
+			for (var i = 0; i < letters.length; i++) {
+				letters[i];
+			}
+
 			found = true; // TEMP: This is just so the browser doesn't freeze on the half-developed loop.
 		}
 	}
