@@ -6,8 +6,7 @@ function setWordList() {
 	//console.log("Set Word List Uncut: '" + wordListUncut + "'");
 	wordList = wordListUncut.split("\n");
 	for (var i = 0; i < wordList.length; i++) {
-		//wordList[i] = wordList[i].replaceAll(" ", "").toUpperCase(); // Remove Spaces
-		wordList[i] = wordList[i].replaceAll("a-z", "").toUpperCase();
+		wordList[i] = wordList[i].replaceAll(" ", "").toUpperCase(); // Remove Spaces
 		if (wordList[i] == "") { // Remove Empty Items
 			wordList.splice(i, 1);
 		}
