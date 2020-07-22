@@ -52,6 +52,10 @@ input {
 	background-color: #ddd;
 }
 
+#generatePuzzle {
+	width: 33.333vw;
+}
+
 button {
 width: 25vw;
 	border: solid 0.25vw #ccc;
@@ -86,6 +90,7 @@ canvas {
 	height: 8vh;
 	border: solid 0.25vw #bbb;
 	background-color: #ccc;
+	text-decoration: none;
 }
 
 #outputs button {
@@ -95,4 +100,5 @@ canvas {
 	height: 8vh;
 	border: solid 0.25vw #bbb;
 	background-color: #ccc;
+	text-decoration: none;
 }
