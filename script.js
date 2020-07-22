@@ -166,18 +166,31 @@ function generatePuzzle() {
 			}
 				// Get Word Letters and Make Array Of Them + Position
 			var letters = word.split("");
+					// Function To Find Item From Original Puzzle Table With Coordinates
+			function findPuzzleCell(x, y) {
+				for (var i = 0; i < puzzleTable.length; i++) {
+					if (puzzleTable[i].x == x && puzzleTable[i].y == y) {
+						return puzzleTable[i];
+					}
+				}
+			}
 					// Function to Test Letter:Coord Fills Against Original Puzzle Table
-			function testLetter() {
-				// Function To Find Item From Original Puzzle Table With Coordinates
-				function findPuzzleCell() {
-
+			function testLetter(l, x, y) {
+				var originalLetter = findPuzzleCell(x, y).l;
+				if (originalLetter == l) {
+					return true;
+				} else {
+					return false;
 				}
 			}
 			var isOkay = true;
 			console.log("Letters: '" + letters + "'");
 			for (var i = 0; i < letters.length; i++) {
-				letters[i];
+				if (testLetter(letters[i], goX * word.length + originX, goY * word.length + originY) != true) {
+					isOkay = false;
+				}
 			}
+			console.log(isOkay);
 
 			found = true; // TEMP: This is just so the browser doesn't freeze on the half-developed loop.
 		}
