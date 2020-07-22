@@ -44,10 +44,10 @@ function markImageButton() {
 	console.log("Set Mark Image: '" + markImage + "'");
 }
 // Puzzle Generation Algorithm
-	// Puzzle Table Array Search Function
+/*	// Puzzle Table Array Search Function
 function searchPuzzleTable() {
 
-}
+}*/ // BUG: IS THIS NEEDED?
 	// Actual Puzzle Generation Function
 function generatePuzzle() {
 	// Run All Set Commands
@@ -132,6 +132,9 @@ function generatePuzzle() {
 					// Choose Random Direction From Possible Directions Array
 			var direction = directions[Math.floor(Math.random() * directions.length)];
 			console.log("Directions: '" + directions + "' Chosen: '" + direction + "'");
+
+			// Check If The Tiles it Will Take Up Won't Fit With That Word
+
 
 			found = true; // TEMP: This is just so the browser doesn't freeze on the half-developed loop.
 		}
