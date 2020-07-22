@@ -63,7 +63,7 @@ function generatePuzzle() {
 	// For Each Word, Search and Test
 	for (var i = 0; i < wordList.length; i++) {
 		var word = wordList[i]; // Whole Word String
-		console.log("Testing Word: '" + word + "'");
+		console.log("Testing: '" + word + "' Length: '" + word.length + "'");
 
 		// While Loop Choosing Coordinates Each Time
 		let found = false; // True/False if Succeeded
@@ -74,15 +74,30 @@ function generatePuzzle() {
 			let originY = coordArrayItem.y;
 
 			// Test Which Directions It Can Go
-			console.log(word.length);
 				// Directions: N
-				// HERE
+				let directionN = false;
+				if (originY + 1 >= word.length) {
+					directionN = true;
+					console.log("N");
+				}
 				// Directions: E
-				// HERE
-				// Directions: S
-				// HERE
+				let directionE = false;
+				if (originX + 1 >= word.length) {
+					directionE = true;
+					console.log("E");
+				}
 				// Directions: W
-				// HERE
+				let directionW = false;
+				if (originX + word.length >= puzzleWidth) {
+					directionW = true;
+					console.log("W");
+				}
+				// Directions: S
+				let directionS = false;
+				if (originY + word.length <= puzzleHeight) {
+					directionS = true;
+					console.log("S");
+				}
 
 			found = true; // TEMP: This is just so the browser doesn't freeze on the half-developed loop.
 		}
