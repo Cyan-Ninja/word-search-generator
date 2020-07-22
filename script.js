@@ -39,6 +39,11 @@ function markImageButton() {
 	console.log("Set Mark Image: '" + markImage + "'");
 }
 // Puzzle Generation Algorithm
+	// Puzzle Table Array Search Function
+function searchPuzzleTable() {
+
+}
+	// Actual Puzzle Generation Function
 function generatePuzzle() {
 	// Run All Set Commands
 	setWordList();
@@ -52,6 +57,33 @@ function generatePuzzle() {
 		}
 	}
 	console.log(puzzleTable);
+
+	// For Each Word, Search and Test
+	for (var i = 0; i < wordList.length; i++) {
+		var word = wordList[i]; // Whole Word String
+		console.log("Testing Word: '" + word + "'");
+
+		// While Loop Choosing Coordinates Each Time
+		let found = false; // True/False if Succeeded
+		while (!found) {
+			coordArrayItem = puzzleTable[Math.floor(Math.random() * puzzleTable.length)]; // Random Array Item For Coordinates
+			console.log(coordArrayItem);
+			let originX = coordArrayItem.x;
+			let originY = coordArrayItem.y;
+
+			// Test Which Directions It Can Go
+				// Directions: N
+				// HERE
+				// Directions: E
+				// HERE
+				// Directions: S
+				// HERE
+				// Directions: W
+				// HERE
+
+			found = true; // TEMP: This is just so the browser doesn't freeze on the half-developed loop.
+		}
+	}
 
 	/* List of Steps */
 	/*
@@ -88,6 +120,7 @@ function generatePuzzle() {
 				// NOTE: I May Implement A Feature That Will Stop The Whole Generation & Alert That It Failed to Find Any Possible Placement For A Word In This Run
 			}
 		}
+		Fill In Every Blank Space
 	*/
 }
 // Canvas
