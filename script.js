@@ -164,19 +164,16 @@ function generatePuzzle() {
 				goY = -1;
 				goX = -1;
 			}
-				// Get Word Letters and Make Array Of Them + Position
+				// Test If Letters Fit
 			var letters = word.split("");
 					// Function to Test Letter:Coord Fills Against Original Puzzle Table
 			function testLetter(testL, testX, testY) {
-					// Function To Find Item From Original Puzzle Table With Coordinates
-				function findPuzzleCell(findX, findY) {
-					for (var i = 0; i < puzzleTable.length; i++) {
-						if (puzzleTable[i].x == findX && puzzleTable[i].y == findY) {
-							return puzzleTable[i];
-						}
+				var originalLetter = "";
+				for (var i = 0; i < puzzleTable.length; i++) {
+					if (puzzleTable[i].x == testX && puzzleTable[i].y == testY) {
+						originalLetter = puzzleTable[i].l;
 					}
 				}
-				var originalLetter = findPuzzleCell(testX, testY).l;
 				if (originalLetter == "" || originalLetter == testL) {
 					return true;
 				} else {
@@ -190,7 +187,15 @@ function generatePuzzle() {
 					isOkay = false;
 				}
 			}
-			console.log(isOkay);
+			// Actually Fill If All Letters Are Okay
+			console.log("Is Okay: '" + isOkay + "'");
+			if (isOkay) {
+				for (var i = 0; i < letters.length; i++) {
+					if (testLetter(letters[i], goX * word.length + originX, goY * word.length + originY) != true) {
+						console.log("All Good");
+					}
+				}
+			}
 
 			found = true; // TEMP: This is just so the browser doesn't freeze on the half-developed loop.
 		}
