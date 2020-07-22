@@ -170,7 +170,7 @@ function generatePuzzle() {
 			function testLetter() {
 				// Function To Find Item From Original Puzzle Table With Coordinates
 				function findPuzzleCell() {
-					
+
 				}
 			}
 			var isOkay = true;
