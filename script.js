@@ -73,31 +73,62 @@ function generatePuzzle() {
 			let originX = coordArrayItem.x;
 			let originY = coordArrayItem.y;
 
-			// Test Which Directions It Can Go
-				// Directions: N
-				let directionN = false;
-				if (originY + 1 >= word.length) {
-					directionN = true;
-					console.log("N");
-				}
-				// Directions: E
-				let directionE = false;
-				if (originX + 1 >= word.length) {
-					directionE = true;
-					console.log("E");
-				}
-				// Directions: W
-				let directionW = false;
-				if (originX + word.length >= puzzleWidth) {
-					directionW = true;
-					console.log("W");
-				}
-				// Directions: S
-				let directionS = false;
-				if (originY + word.length <= puzzleHeight) {
-					directionS = true;
-					console.log("S");
-				}
+			// Test And Choose A Direction
+				// Testing Direction By Puzzle Boundaries
+					// Directions: North
+			let dirN = false;
+			if (originY + 1 >= word.length) {
+				dirN = true;
+				//console.log("N");
+			}
+					// Directions: East
+			let dirE = false;
+			if (originX + 1 >= word.length) {
+				dirE = true;
+				//console.log("E");
+			}
+					// Directions: West
+			let dirW = false;
+			if (originX + word.length >= puzzleWidth) {
+				dirW = true;
+				//console.log("W");
+			}
+					// Directions: South
+			let dirS = false;
+			if (originY + word.length <= puzzleHeight) {
+				dirS = true;
+				//console.log("S");
+			}
+				// Choose Direction
+					// Make Array Of Possible Directions
+			var directions = [];
+			if (dirN) {
+				directions.push("N");
+			}
+			if (dirE) {
+				directions.push("E");
+			}
+			if (dirW) {
+				directions.push("W");
+			}
+			if (dirS) {
+				directions.push("S");
+			}
+			if (dirN && dirE) {
+				directions.push("NE")
+			}
+			if (dirN && dirW) {
+				directions.push("NW")
+			}
+			if (dirS && dirE) {
+				directions.push("SE")
+			}
+			if (dirS && dirW) {
+				directions.push("SW")
+			}
+					// Choose Random Direction From Possible Directions Array
+			var direction = directions[Math.floor(Math.random() * directions.length)];
+			console.log("Directions: '" + directions + "' Chosen: '" + direction + "'");
 
 			found = true; // TEMP: This is just so the browser doesn't freeze on the half-developed loop.
 		}
