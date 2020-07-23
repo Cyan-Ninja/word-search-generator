@@ -55,8 +55,8 @@ function generatePuzzle() {
 	setTitle();
 	// Create Array With Coordinates and Letter Fills
 	var puzzleTable = [];
-	for (var x = 0; x < puzzleWidth; x++) {
-		for (var y = 0; y < puzzleHeight; y++) {
+	for (var y = 0; y < puzzleHeight; y++) {
+		for (var x = 0; x < puzzleWidth; x++) {
 			puzzleTable.push({x: x, y: y, l: ""});
 		}
 	}
@@ -70,6 +70,7 @@ function generatePuzzle() {
 		// While Loop Choosing Coordinates Each Time
 		var found = false; // True/False if Succeeded
 		while (!found) {
+			found = false;
 			coordArrayItem = puzzleTable[Math.floor(Math.random() * puzzleTable.length)]; // Random Array Item For Coordinates
 			console.log(coordArrayItem);
 			let originX = coordArrayItem.x;
@@ -167,8 +168,7 @@ function generatePuzzle() {
 				goY = -1;
 				goX = -1;
 			}
-			goX = goX - 0;
-			goY = goY - 0;
+
 				// Test If Letters Fit
 			var letters = word.split("");
 					// Function to Test Letter:Coord Fills Against Original Puzzle Table
@@ -196,6 +196,7 @@ function generatePuzzle() {
 			}
 			// Actually Fill If All Letters Are Okay
 			console.log("Is Still Okay: '" + isOkay + "'");
+			var found = false;
 			if (isOkay) {
 				for (var letterItem = 0; letterItem < letters.length; letterItem++) {
 					// Coordinates Of Current Letter
@@ -211,15 +212,26 @@ function generatePuzzle() {
 
 					console.log(testX + " : " + testY);
 				}
+				found = true;
 			}
-
-			// TEMP: This is just so the browser doesn't freeze on the half-developed loop.
-			found = true;
-			break;
 		}
 		console.log(puzzleTable);
 		// TEMP: Script To Show Puzzle Table Array
-
+		for (var i = 0; i < puzzleTable.length; i++) {
+			if (puzzleTable[i].l == "") {
+				puzzleTable[i].l = "█";
+			}
+		}
+		var html = "";
+		var lastY = 0;
+		for (var i = 0; i < puzzleTable.length; i++) {
+			if (lastY != puzzleTable[i].y) {
+				html += "<br>"
+			}
+			html += puzzleTable[i].l + " ";
+			lastY = puzzleTable[i].y;
+		}
+		document.getElementById("tempDisplay").innerHTML = html;
 	}
 
 	/* List of Steps */
