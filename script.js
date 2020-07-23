@@ -6,9 +6,9 @@ function setWordList() {
 	wordList = wordListUncut.split("\n");
 	for (var cWord = 0; cWord < wordList.length; cWord++) {
 		wordList[cWord] = wordList[cWord].replaceAll(" ", "").toUpperCase(); // Remove Spaces & Uppercase All
-		if (wordList[cWord] == "") { // Remove Empty Items
-			wordList.splice(i, 1);
-		}
+		/*if (wordList[cWord] == "") { // Remove Empty Items
+			wordList.splice(cWord, 1);
+		}*/ // Not Being Used (At Least Yet)
 	}
 }
 // Set Puzzle Width & Height
@@ -136,15 +136,19 @@ function generatePuzzle() {
 			var goX = 0;
 			var goY = 0;
 			if (direction = "N") {
+				goX = 0;
 				goY = 1;
 			}
 			if (direction = "E") {
 				goX = 1;
+				goY = 0;
 			}
 			if (direction = "W") {
 				goX = -1;
+				goY = 0;
 			}
 			if (direction = "S") {
+				goX = 0;
 				goY = -1;
 			}
 			if (direction = "NE") {
@@ -163,6 +167,8 @@ function generatePuzzle() {
 				goY = -1;
 				goX = -1;
 			}
+			goX = goX - 0;
+			goY = goY - 0;
 				// Test If Letters Fit
 			var letters = word.split("");
 					// Function to Test Letter:Coord Fills Against Original Puzzle Table
@@ -184,15 +190,26 @@ function generatePuzzle() {
 			var isOkay = true;
 			//console.log("Letters: '" + letters + "'");
 			for (var cToTest = 0; cToTest < letters.length; cToTest++) {
-				if (testLetter(letters[cToTest], goX * cToTest + originX, goY * cToTest + originY) != true) {
+				if (testLetter(letters[cToTest], (goX * cToTest) + originX, (goY * cToTest) + originY) != true) {
 					isOkay = false;
 				}
 			}
 			// Actually Fill If All Letters Are Okay
 			console.log("Is Still Okay: '" + isOkay + "'");
 			if (isOkay) {
-				for (var cToTest = 0; cToTest < letters.length; cToTest++) {
-					
+				for (var letterItem = 0; letterItem < letters.length; letterItem++) {
+					// Coordinates Of Current Letter
+					letter = letters[letterItem];
+					testX = (goX * letterItem) + originX;
+					testY = (goY * letterItem) + originY;
+					// Script To Find Items From Puzzle Table Array Based On Coordinates & Change Their Letter Fills
+					for (var cPuzzleTableItem = 0; cPuzzleTableItem < puzzleTable.length; cPuzzleTableItem++) {
+						if (puzzleTable[cPuzzleTableItem].x == testX && puzzleTable[cPuzzleTableItem].y == testY) {
+							puzzleTable[cPuzzleTableItem].l = letter;
+						}
+					}
+
+					console.log(testX + " : " + testY);
 				}
 			}
 
@@ -201,6 +218,8 @@ function generatePuzzle() {
 			break;
 		}
 		console.log(puzzleTable);
+		// TEMP: Script To Show Puzzle Table Array
+
 	}
 
 	/* List of Steps */
