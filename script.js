@@ -168,6 +168,8 @@ function generatePuzzle() {
 				goY = -1;
 				goX = -1;
 			}
+			goX = 0 - goX;
+			goY = 0 - goY;
 
 				// Test If Letters Fit
 			var letters = word.split("");
@@ -190,13 +192,15 @@ function generatePuzzle() {
 			var isOkay = true;
 			//console.log("Letters: '" + letters + "'");
 			for (var cToTest = 0; cToTest < letters.length; cToTest++) {
-				if (testLetter(letters[cToTest], (goX * cToTest) + originX, (goY * cToTest) + originY) != true) {
+				console.log(((goX * cToTest) + originX) + " : . : " + ((goY * cToTest) + originY));
+				console.log(cToTest);
+				if (testLetter(letters[cToTest], ((goX * cToTest) + originX), ((goY * cToTest) + originY)) != true) {
 					isOkay = false;
 				}
 			}
 			// Actually Fill If All Letters Are Okay
 			console.log("Is Still Okay: '" + isOkay + "'");
-			var found = false;
+			var found = true;
 			if (isOkay) {
 				for (var letterItem = 0; letterItem < letters.length; letterItem++) {
 					// Coordinates Of Current Letter
@@ -213,6 +217,8 @@ function generatePuzzle() {
 					console.log(testX + " : " + testY);
 				}
 				found = true;
+			} else {
+				//found = false;
 			}
 		}
 		console.log(puzzleTable);
