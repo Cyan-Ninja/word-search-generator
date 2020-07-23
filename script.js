@@ -5,9 +5,9 @@ function setWordList() {
 	let wordListUncut = document.getElementById("wordList").value;
 	//console.log("Set Word List Uncut: '" + wordListUncut + "'");
 	wordList = wordListUncut.split("\n");
-	for (var i = 0; i < wordList.length; i++) {
-		wordList[i] = wordList[i].replaceAll(" ", "").toUpperCase(); // Remove Spaces
-		if (wordList[i] == "") { // Remove Empty Items
+	for (var cWord = 0; cWord < wordList.length; cWord++) {
+		wordList[cWord] = wordList[cWord].replaceAll(" ", "").toUpperCase(); // Remove Spaces
+		if (wordList[cWord] == "") { // Remove Empty Items
 			wordList.splice(i, 1);
 		}
 	}
@@ -64,8 +64,8 @@ function generatePuzzle() {
 	console.log(puzzleTable);
 
 	// For Each Word, Search and Test
-	for (var i = 0; i < wordList.length - 1; i++) {
-		var word = wordList[i]; // Whole Word String
+	for (var cWord = 0; cWord < wordList.length - 1; cWord++) {
+		var word = wordList[cWord]; // Whole Word String
 		console.log("Testing: '" + word + "' Length: '" + word.length + "'");
 
 		// While Loop Choosing Coordinates Each Time
@@ -169,9 +169,9 @@ function generatePuzzle() {
 					// Function to Test Letter:Coord Fills Against Original Puzzle Table
 			function testLetter(testL, testX, testY) {
 				var originalLetter = "";
-				for (var i = 0; i < puzzleTable.length; i++) {
-					if (puzzleTable[i].x == testX && puzzleTable[i].y == testY) {
-						originalLetter = puzzleTable[i].l;
+				for (var cOriginTable = 0; cOriginTable < puzzleTable.length; cOriginTable++) {
+					if (puzzleTable[cOriginTable].x == testX && puzzleTable[cOriginTable].y == testY) {
+						originalLetter = puzzleTable[cOriginTable].l;
 					}
 				}
 				if (originalLetter == "" || originalLetter == testL) {
@@ -182,20 +182,16 @@ function generatePuzzle() {
 			}
 			var isOkay = true;
 			//console.log("Letters: '" + letters + "'");
-			for (var i = 0; i < letters.length; i++) {
-				if (testLetter(letters[i], goX * word.length + originX, goY * word.length + originY) != true) {
+			for (var cToTest = 0; cToTest < letters.length; cToTest++) {
+				if (testLetter(letters[cToTest], goX * cToTest + originX, goY * cToTest + originY) != true) {
 					isOkay = false;
 				}
 			}
 			// Actually Fill If All Letters Are Okay
 			console.log("Is Still Okay: '" + isOkay + "'");
-/*			if (isOkay) {
-				for (var i = 0; i < letters.length; i++) {
-					if (testLetter(letters[i], goX * word.length + originX, goY * word.length + originY) != true) {
-						console.log("All Good");
-					}
-				}
-			}*/ // Broken
+			if (isOkay) {
+
+			}
 
 			// TEMP: This is just so the browser doesn't freeze on the half-developed loop.
 			found = true;
