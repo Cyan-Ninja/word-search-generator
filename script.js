@@ -74,6 +74,7 @@ function generatePuzzle() {
 			originTableItem = puzzleTable[Math.floor(Math.random() * puzzleTable.length)]; // Random Array Item For Coordinates
 			originX = originTableItem.x;
 			originY = originTableItem.y;
+			console.log("OriginXY: " + originX + ":" + originY);
 			// Get Direction
 			var directions = [];
 			if (originY > word.length) {
@@ -103,36 +104,44 @@ function generatePuzzle() {
 			var direction = directions[Math.floor(Math.random() * directions.length)];
 			var goX = 0;
 			var goY = 0;
-			if (direction = "N") {
+			if (direction == "N") {
 				goY = -1;
 			}
-			if (direction = "W") {
+			if (direction == "W") {
 				goX = 1;
 			}
-			if (direction = "S") {
+			if (direction == "S") {
 				goY = 1;
 			}
-			if (direction = "E") {
+			if (direction == "E") {
 				goY = -1;
 			}
-			if (direction = "NW") {
+			if (direction == "NW") {
 				goX = 1;
 				goY = -1;
 			}
-			if (direction = "NE") {
+			if (direction == "NE") {
 				goX = -1;
 				goY = -1;
 			}
-			if (direction = "SW") {
+			if (direction == "SW") {
 				goX = 1;
 				goY = 1;
 			}
-			if (direction = "SE") {
+			if (direction == "SE") {
 				goX = -1;
 				goY = 1;
 			}
 			console.log("goX: " + goX + "  goY: " + goY + "   Dir: " + direction + "  Dirs: " + directions);
-
+			// Test Each Letter's Validity
+			var isOkay = true; // If True, All Letters Succeeded
+			var letters = word.split("");
+			for (var letterItemNum = 0; letterItemNum < letters.length; letterItemNum++) {
+				var letter = letters[letterItemNum];
+				var letterX = (goX * letterItemNum) + originX;
+				var letterY = (goY * letterItemNum) + originY;
+				console.log("Testing Letter: " + letter + "  XY: " + letterX + ":" + letterY);
+			}
 			found = true; // Catch-All For Development
 		}
 	}
