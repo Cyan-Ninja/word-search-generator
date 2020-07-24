@@ -60,11 +60,14 @@ function generatePuzzle() {
 			puzzleTable.push({x: x, y: y, l: ""});
 		}
 	}
-	console.log("Starting Table: '" + puzzleTable + "'");
+	console.log("Starting Table:");
+	console.log(puzzleTable);
 
+	console.warn(wordList);
 	// For Each Word, Search and Test
 
-	console.log("Ending Table: '" + puzzleTable + "'");
+	console.log("Ending Table:");
+	console.log(puzzleTable);
 	// TEMP: Script To Show Puzzle Table Array
 	for (var i = 0; i < puzzleTable.length; i++) {
 		if (puzzleTable[i].l == "") {
