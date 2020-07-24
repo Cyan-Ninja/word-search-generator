@@ -101,7 +101,37 @@ function generatePuzzle() {
 				directions.push("SE");
 			}
 			var direction = directions[Math.floor(Math.random() * directions.length)];
-			console.log("Dir- " + direction + " 	Dirs- " + directions);
+			var goX = 0;
+			var goY = 0;
+			if (direction = "N") {
+				goY = -1;
+			}
+			if (direction = "W") {
+				goX = 1;
+			}
+			if (direction = "S") {
+				goY = 1;
+			}
+			if (direction = "E") {
+				goY = -1;
+			}
+			if (direction = "NW") {
+				goX = 1;
+				goY = -1;
+			}
+			if (direction = "NE") {
+				goX = -1;
+				goY = -1;
+			}
+			if (direction = "SW") {
+				goX = 1;
+				goY = 1;
+			}
+			if (direction = "SE") {
+				goX = -1;
+				goY = 1;
+			}
+			console.log("goX: " + goX + "  goY: " + goY + "   Dir: " + direction + "  Dirs: " + directions);
 
 			found = true; // Catch-All For Development
 		}
