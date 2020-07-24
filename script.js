@@ -85,8 +85,20 @@ function generatePuzzle() {
 			if (originY + word.length <= puzzleHeight) {
 				directions.push("S");
 			}
-			if (originX + word.length <= puzzleHeight) {
+			if (originX + word.length <= puzzleWidth) {
 				directions.push("E");
+			}
+			if ((originY > word.length) && (originX > word.length)) {
+				directions.push("NW");
+			}
+			if ((originY > word.length) && (originX + word.length <= puzzleWidth)) {
+				directions.push("NE");
+			}
+			if ((originY + word.length <= puzzleWidth) && (originX > word.length)) {
+				directions.push("SW");
+			}
+			if ((originY + word.length <= puzzleWidth) && (originX + word.length <= puzzleWidth)) {
+				directions.push("SE");
 			}
 			var direction = directions[Math.floor(Math.random() * directions.length)];
 			console.log("Dir- " + direction + " 	Dirs- " + directions);
