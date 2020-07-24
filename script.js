@@ -219,9 +219,9 @@ function tempDisplay() {
 var c = document.getElementById("canvas");
 var ctx = c.getContext("2d");
 	// Example Background Colour
-ctx.fillStyle = "#fff";
+ctx.fillStyle = "#044";
 ctx.fillRect(0, 0, c.width, c.height);
 	// Example Text
-ctx.fillStyle = "#000";
+ctx.fillStyle = "#dee";
 ctx.font = "64px Arial";
 ctx.fillText("I will be your image!", 50, 100);
