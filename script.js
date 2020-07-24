@@ -1,7 +1,6 @@
 /* Main Webapp Script (JavaScript) */ // Working
 // Set Word list
 var wordList = [];
-var wordsUsed = [];
 function setWordList() {
 	let wordListUncut = document.getElementById("wordList").value;
 	wordList = wordListUncut.split("\n");
@@ -67,9 +66,7 @@ function generatePuzzle() {
 		console.log("'" + word + "' 	Length: " + word.length);
 		// While Loop To Check Coordinates and Directions Until Found
 		var found = false;
-		var triesTaken = 0;
-		while (!found || (triesTaken > 10)) {
-			triesTaken++;
+		while (!found) {
 			originTableItem = puzzleTable[Math.floor(Math.random() * puzzleTable.length)]; // Random Array Item For Coordinates
 			originX = originTableItem.x;
 			originY = originTableItem.y;
