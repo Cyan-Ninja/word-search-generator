@@ -58,7 +58,6 @@ function generatePuzzle() {
 	}
 	console.log("Starting Table:");
 	console.log(puzzleTable);
-
 	console.log(wordList);
 	// For Each Word, Search and Test
 	for (var wordItemNum = 0; wordItemNum < wordList.length; wordItemNum++) {
@@ -174,7 +173,6 @@ function generatePuzzle() {
 
 	console.log("Ending Table:");
 	console.log(puzzleTable);
-	console.log("Words Used:");
 
 	/* List of Steps */
 	/*
