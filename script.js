@@ -63,8 +63,29 @@ function generatePuzzle() {
 	console.log("Starting Table:");
 	console.log(puzzleTable);
 
-	console.warn(wordList);
+	console.log(wordList);
 	// For Each Word, Search and Test
+	for (var wordItemNum = 0; wordItemNum < wordList.length; wordItemNum++) {
+		word = wordList[wordItemNum];
+		console.log(word + " --- Length: " + word.length);
+		// While Loop To Check Coordinates and Directions Until Found
+		var found = false;
+		while (!found) {
+			originTableItem = puzzleTable[Math.floor(Math.random() * puzzleTable.length)]; // Random Array Item For Coordinates
+			originX = originTableItem.x;
+			originY = originTableItem.y;
+			// Get Direction
+			var directions = [];
+			if (originY > word.length) {
+				console.log(originY + " > North > " + word.length);
+			}
+			if (originX > word.length) {
+				console.log(originX + " > West > " + word.length);
+			}
+
+			found = true; // Catch-All For Development
+		}
+	}
 
 	console.log("Ending Table:");
 	console.log(puzzleTable);
