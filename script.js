@@ -168,11 +168,10 @@ function generatePuzzle() {
 				found = true;
 			}
 		}
-		tempDisplay();
 	}
-
 	console.log("Ending Table:");
 	console.log(puzzleTable);
+	tempDisplay();
 
 	/* List of Steps */
 	/*
@@ -200,7 +199,7 @@ function generatePuzzle() {
 function tempDisplay() {
 	for (var i = 0; i < puzzleTable.length; i++) {
 		if (puzzleTable[i].l == "") {
-			puzzleTable[i].l = "█";
+			puzzleTable[i].l = "█"; // Will Be The Full Block (█) Character In Future
 		}
 	}
 	var html = "";
