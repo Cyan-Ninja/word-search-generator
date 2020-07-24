@@ -1,6 +1,7 @@
 /* Main Webapp Script (JavaScript) */
 // Set Word list
 var wordList = [];
+var wordsUsed = [];
 function setWordList() {
 	let wordListUncut = document.getElementById("wordList").value;
 	wordList = wordListUncut.split("\n");
@@ -66,7 +67,9 @@ function generatePuzzle() {
 		console.log("'" + word + "' 	Length: " + word.length);
 		// While Loop To Check Coordinates and Directions Until Found
 		var found = false;
-		while (!found) {
+		var triesTaken = 0;
+		while (!found || (triesTaken > 10)) {
+			triesTaken++;
 			originTableItem = puzzleTable[Math.floor(Math.random() * puzzleTable.length)]; // Random Array Item For Coordinates
 			originX = originTableItem.x;
 			originY = originTableItem.y;
@@ -166,6 +169,7 @@ function generatePuzzle() {
 						}
 					}
 				}
+				wordsUsed.push(letter);
 				found = true;
 			}
 		}
@@ -174,6 +178,8 @@ function generatePuzzle() {
 
 	console.log("Ending Table:");
 	console.log(puzzleTable);
+	console.log("Words Used:");
+	console.log(wordsUsed);
 
 	/* List of Steps */
 	/*
