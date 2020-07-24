@@ -43,18 +43,14 @@ function markImageButton() {
 	console.log("Set Mark Image: '" + markImage + "'");
 }
 // Puzzle Generation Algorithm
-/*	// Puzzle Table Array Search Function
-function searchPuzzleTable() {
-
-}*/ // BUG: IS THIS NEEDED?
-	// Actual Puzzle Generation Function
+var puzzleTable = [];
 function generatePuzzle() {
 	// Run All Set Commands
 	setWordList();
 	setSize();
 	setTitle();
 	// Create Array With Coordinates and Letter Fills
-	var puzzleTable = [];
+	puzzleTable = [];
 	for (var y = 0; y < puzzleHeight; y++) {
 		for (var x = 0; x < puzzleWidth; x++) {
 			puzzleTable.push({x: x, y: y, l: ""});
@@ -142,6 +138,7 @@ function generatePuzzle() {
 				var letterY = (goY * letterItemNum) + originY;
 				console.log("Testing Letter: " + letter + "  XY: " + letterX + ":" + letterY);
 				if (letterX < 1 || letterX > puzzleWidth - 1 || letterY < 1 || letterY > puzzleHeight - 1) {
+					isOkay = false;
 				} else {
 					for (var OriginTableItemNum = 0; OriginTableItemNum < puzzleTable.length; OriginTableItemNum++) {
 						if (puzzleTable[OriginTableItemNum].x == letterX && puzzleTable[OriginTableItemNum].y == letterY) {
@@ -155,42 +152,28 @@ function generatePuzzle() {
 					}
 				}
 			}
+			console.log("Is Okay?: " + isOkay);
 			// If They Are All Valid, 'isOkay' Is True & All Fills Be Set
-			for (var letterItemNum = 0; letterItemNum < letters.length; letterItemNum++) {
-				var letter = letters[letterItemNum];
-				var letterX = (goX * letterItemNum) + originX;
-				var letterY = (goY * letterItemNum) + originY;
-				console.log("Testing Letter: " + letter + "  XY: " + letterX + ":" + letterY);
-				for (var OriginTableItemNum = 0; OriginTableItemNum < puzzleTable.length; OriginTableItemNum++) {
-					if (puzzleTable[OriginTableItemNum].x == letterX && puzzleTable[OriginTableItemNum].y == letterY) {
-						// Continue Here
-						puzzleTable[OriginTableItemNum].l = letter;
+			if (isOkay) {
+				for (var letterItemNum = 0; letterItemNum < letters.length; letterItemNum++) {
+					var letter = letters[letterItemNum];
+					var letterX = (goX * letterItemNum) + originX;
+					var letterY = (goY * letterItemNum) + originY;
+					for (var OriginTableItemNum = 0; OriginTableItemNum < puzzleTable.length; OriginTableItemNum++) {
+						if (puzzleTable[OriginTableItemNum].x == letterX && puzzleTable[OriginTableItemNum].y == letterY) {
+							// Continue Here
+							puzzleTable[OriginTableItemNum].l = letter;
+						}
 					}
 				}
+				found = true;
 			}
-
-			found = true; // Catch-All For Development
 		}
+		tempDisplay();
 	}
 
 	console.log("Ending Table:");
 	console.log(puzzleTable);
-	// TEMP: Script To Show Puzzle Table Array
-	for (var i = 0; i < puzzleTable.length; i++) {
-		if (puzzleTable[i].l == "") {
-			puzzleTable[i].l = "█";
-		}
-	}
-	var html = "";
-	var lastY = 0;
-	for (var i = 0; i < puzzleTable.length; i++) {
-		if (lastY != puzzleTable[i].y) {
-			html += "<br>"
-		}
-		html += puzzleTable[i].l + "."; // Just Have "." If Spaces Look Nicer
-		lastY = puzzleTable[i].y;
-	}
-	document.getElementById("tempDisplay").innerHTML = html;
 
 	/* List of Steps */
 	/*
@@ -213,6 +196,25 @@ function generatePuzzle() {
 		}
 		Fill In Every Blank Space
 	*/
+}
+// TEMP: Script To Show Puzzle Table Array
+function tempDisplay() {
+	for (var i = 0; i < puzzleTable.length; i++) {
+		if (puzzleTable[i].l == "") {
+			puzzleTable[i].l = "█";
+		}
+	}
+	var html = "";
+	var lastY = 0;
+	for (var i = 0; i < puzzleTable.length; i++) {
+		if (lastY != puzzleTable[i].y) {
+			html += "<br>"
+		}
+		html += puzzleTable[i].l + " "; // Just Have "." If Spaces Look Nicer
+		lastY = puzzleTable[i].y;
+	}
+	document.getElementById("tempDisplay").innerHTML = html;
+	document.getElementById("tempDisplay").style.fontFamily = "monospace";
 }
 // Canvas
 	// Context
