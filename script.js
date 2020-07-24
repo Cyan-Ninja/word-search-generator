@@ -67,7 +67,7 @@ function generatePuzzle() {
 	// For Each Word, Search and Test
 	for (var wordItemNum = 0; wordItemNum < wordList.length; wordItemNum++) {
 		word = wordList[wordItemNum];
-		console.log(word + " --- Length: " + word.length);
+		console.log("'" + word + "' 	Length: " + word.length);
 		// While Loop To Check Coordinates and Directions Until Found
 		var found = false;
 		while (!found) {
@@ -77,11 +77,19 @@ function generatePuzzle() {
 			// Get Direction
 			var directions = [];
 			if (originY > word.length) {
-				console.log(originY + " > North > " + word.length);
+				directions.push("N");
 			}
 			if (originX > word.length) {
-				console.log(originX + " > West > " + word.length);
+				directions.push("W");
 			}
+			if (originY + word.length <= puzzleHeight) {
+				directions.push("S");
+			}
+			if (originX + word.length <= puzzleHeight) {
+				directions.push("E");
+			}
+			var direction = directions[Math.floor(Math.random() * directions.length)];
+			console.log("Dir- " + direction + " 	Dirs- " + directions);
 
 			found = true; // Catch-All For Development
 		}
@@ -101,7 +109,7 @@ function generatePuzzle() {
 		if (lastY != puzzleTable[i].y) {
 			html += "<br>"
 		}
-		html += puzzleTable[i].l + " ";
+		html += puzzleTable[i].l + "."; // Just Have "." If Spaces Look Nicer
 		lastY = puzzleTable[i].y;
 	}
 	document.getElementById("tempDisplay").innerHTML = html;
