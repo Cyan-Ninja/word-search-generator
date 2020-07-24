@@ -141,7 +141,31 @@ function generatePuzzle() {
 				var letterX = (goX * letterItemNum) + originX;
 				var letterY = (goY * letterItemNum) + originY;
 				console.log("Testing Letter: " + letter + "  XY: " + letterX + ":" + letterY);
+				for (var OriginTableItemNum = 0; OriginTableItemNum < puzzleTable.length; OriginTableItemNum++) {
+					if (puzzleTable[OriginTableItemNum].x == letterX && puzzleTable[OriginTableItemNum].y == letterY) {
+						// Continue Here
+						if ((puzzleTable[OriginTableItemNum].l == "") || (puzzleTable[OriginTableItemNum].l == letter)) {
+							// It Is Valid & Nothing Should Happen
+						} else {
+							isOkay = false; // It Is Not Valid & It Should Not Continue
+						}
+					}
+				}
 			}
+			// If They Are All Valid, 'isOkay' Is True & All Fills Be Set
+			for (var letterItemNum = 0; letterItemNum < letters.length; letterItemNum++) {
+				var letter = letters[letterItemNum];
+				var letterX = (goX * letterItemNum) + originX;
+				var letterY = (goY * letterItemNum) + originY;
+				console.log("Testing Letter: " + letter + "  XY: " + letterX + ":" + letterY);
+				for (var OriginTableItemNum = 0; OriginTableItemNum < puzzleTable.length; OriginTableItemNum++) {
+					if (puzzleTable[OriginTableItemNum].x == letterX && puzzleTable[OriginTableItemNum].y == letterY) {
+						// Continue Here
+						puzzleTable[OriginTableItemNum].l = letter;
+					}
+				}
+			}
+
 			found = true; // Catch-All For Development
 		}
 	}
