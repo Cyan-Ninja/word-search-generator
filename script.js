@@ -69,7 +69,7 @@ function generatePuzzle() {
 			originTableItem = puzzleTable[Math.floor(Math.random() * puzzleTable.length)]; // Random Array Item For Coordinates
 			originX = originTableItem.x;
 			originY = originTableItem.y;
-			console.log("OriginXY: " + originX + ":" + originY);
+			console.log("Word: " + word + "  OriginXY: " + originX + ":" + originY);
 			// Get Direction
 			var directions = [];
 			if (originY > word.length) {
@@ -127,7 +127,7 @@ function generatePuzzle() {
 				goX = -1;
 				goY = 1;
 			}
-			console.log("goX: " + goX + "  goY: " + goY + "   Dir: " + direction + "  Dirs: " + directions);
+			//console.log("goX: " + goX + "  goY: " + goY + "   Dir: " + direction + "  Dirs: " + directions);
 			// Test Each Letter's Validity
 			var isOkay = true; // If True, All Letters Succeeded
 			var letters = word.split("");
@@ -135,7 +135,7 @@ function generatePuzzle() {
 				var letter = letters[letterItemNum];
 				var letterX = (goX * letterItemNum) + originX;
 				var letterY = (goY * letterItemNum) + originY;
-				console.log("Testing Letter: " + letter + "  XY: " + letterX + ":" + letterY);
+				//console.log("Testing Letter: " + letter + "  XY: " + letterX + ":" + letterY);
 				if (letterX < 1 || letterX > puzzleWidth - 1 || letterY < 1 || letterY > puzzleHeight - 1) {
 					isOkay = false;
 				} else {
