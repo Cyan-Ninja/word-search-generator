@@ -141,13 +141,16 @@ function generatePuzzle() {
 				var letterX = (goX * letterItemNum) + originX;
 				var letterY = (goY * letterItemNum) + originY;
 				console.log("Testing Letter: " + letter + "  XY: " + letterX + ":" + letterY);
-				for (var OriginTableItemNum = 0; OriginTableItemNum < puzzleTable.length; OriginTableItemNum++) {
-					if (puzzleTable[OriginTableItemNum].x == letterX && puzzleTable[OriginTableItemNum].y == letterY) {
-						// Continue Here
-						if ((puzzleTable[OriginTableItemNum].l == "") || (puzzleTable[OriginTableItemNum].l == letter)) {
-							// It Is Valid & Nothing Should Happen
-						} else {
-							isOkay = false; // It Is Not Valid & It Should Not Continue
+				if (letterX < 1 || letterX > puzzleWidth - 1 || letterY < 1 || letterY > puzzleHeight - 1) {
+				} else {
+					for (var OriginTableItemNum = 0; OriginTableItemNum < puzzleTable.length; OriginTableItemNum++) {
+						if (puzzleTable[OriginTableItemNum].x == letterX && puzzleTable[OriginTableItemNum].y == letterY) {
+							// Continue Here
+							if ((puzzleTable[OriginTableItemNum].l == "") || (puzzleTable[OriginTableItemNum].l == letter)) {
+								// It Is Valid & Nothing Should Happen
+							} else {
+								isOkay = false; // It Is Not Valid & It Should Not Continue
+							}
 						}
 					}
 				}
