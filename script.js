@@ -163,23 +163,7 @@ function generatePuzzle() {
 			While (Until Correct Coords+Direction is Found & Set or Too many Tries) {
 				Choose Random Coordinate
 
-				var directionsAvailable = [];
-				Check If Can Go Direction-E
-					Add To directionsAvailable if True
-				Check If Can Go Direction-SE
-					Add To directionsAvailable if True
-				Check If Can Go Direction-S
-					Add To directionsAvailable if True
-				Check If Can Go Direction-SW
-					Add To directionsAvailable if True
-				Check If Can Go Direction-W
-					Add To directionsAvailable if True
-				Check If Can Go Direction-NW
-					Add To directionsAvailable if True
-				Check If Can Go Direction-N
-					Add To directionsAvailable if True
-				Check If Can Go Direction-NE
-					Add To directionsAvailable if True
+				Get & Choose Directions (With 'goN's)
 
 				While (directionsAvailable != []) {
 					Choose An Available Direction From The Array
