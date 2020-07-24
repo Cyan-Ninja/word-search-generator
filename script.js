@@ -166,7 +166,6 @@ function generatePuzzle() {
 						}
 					}
 				}
-				wordsUsed.push(letter);
 				found = true;
 			}
 		}
@@ -176,7 +175,6 @@ function generatePuzzle() {
 	console.log("Ending Table:");
 	console.log(puzzleTable);
 	console.log("Words Used:");
-	console.log(wordsUsed);
 
 	/* List of Steps */
 	/*
