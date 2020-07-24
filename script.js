@@ -199,7 +199,7 @@ function generatePuzzle() {
 function tempDisplay() {
 	for (var i = 0; i < puzzleTable.length; i++) {
 		if (puzzleTable[i].l == "") {
-			puzzleTable[i].l = "█";
+			puzzleTable[i].l = "█"; // It Is █ To Shown Empty Cells
 		}
 	}
 	var html = "";
@@ -208,7 +208,7 @@ function tempDisplay() {
 		if (lastY != puzzleTable[i].y) {
 			html += "<br>"
 		}
-		html += puzzleTable[i].l + " "; // Just Have "." If Spaces Look Nicer
+		html += puzzleTable[i].l + " "; // Just Have " " Since Spaces Look Nicer
 		lastY = puzzleTable[i].y;
 	}
 	document.getElementById("tempDisplay").innerHTML = html;
