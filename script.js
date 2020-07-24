@@ -60,183 +60,27 @@ function generatePuzzle() {
 			puzzleTable.push({x: x, y: y, l: ""});
 		}
 	}
-	console.log(puzzleTable);
+	console.log("Starting Table: '" + puzzleTable + "'");
 
 	// For Each Word, Search and Test
-	for (var cWord = 0; cWord < wordList.length; cWord++) {
-		var word = wordList[cWord]; // Whole Word String
-		console.log("Testing: '" + word + "' Length: '" + word.length + "'");
 
-		// While Loop Choosing Coordinates Each Time
-		var found = false; // True/False if Succeeded
-		while (!found) {
-			found = false;
-			coordArrayItem = puzzleTable[Math.floor(Math.random() * puzzleTable.length)]; // Random Array Item For Coordinates
-			console.log(coordArrayItem);
-			let originX = coordArrayItem.x;
-			let originY = coordArrayItem.y;
-
-			// Test And Choose A Direction
-				// Testing Direction By Puzzle Boundaries
-					// Directions: North
-			let dirN = false;
-			if (originY + 1 >= word.length) {
-				dirN = true;
-				//console.log("N");
-			}
-					// Directions: East
-			let dirE = false;
-			if (originX + 1 >= word.length) {
-				dirE = true;
-				//console.log("E");
-			}
-					// Directions: West
-			let dirW = false;
-			if (originX + word.length >= puzzleWidth) {
-				dirW = true;
-				//console.log("W");
-			}
-					// Directions: South
-			let dirS = false;
-			if (originY + word.length <= puzzleHeight) {
-				dirS = true;
-				//console.log("S");
-			}
-				// Choose Direction
-					// Make Array Of Possible Directions
-			var directions = [];
-			if (dirN) {
-				directions.push("N");
-			}
-			if (dirE) {
-				directions.push("E");
-			}
-			if (dirW) {
-				directions.push("W");
-			}
-			if (dirS) {
-				directions.push("S");
-			}
-			if (dirN && dirE) {
-				directions.push("NE")
-			}
-			if (dirN && dirW) {
-				directions.push("NW")
-			}
-			if (dirS && dirE) {
-				directions.push("SE")
-			}
-			if (dirS && dirW) {
-				directions.push("SW")
-			}
-					// Choose Random Direction From Possible Directions Array
-			var direction = directions[Math.floor(Math.random() * directions.length)];
-			console.log("Directions: '" + directions + "' Chosen: '" + direction + "'");
-
-			// Check If The Tiles it Will Take Up Won't Fit With That Word
-			var goX = 0;
-			var goY = 0;
-			if (direction = "N") {
-				goX = 0;
-				goY = 1;
-			}
-			if (direction = "E") {
-				goX = 1;
-				goY = 0;
-			}
-			if (direction = "W") {
-				goX = -1;
-				goY = 0;
-			}
-			if (direction = "S") {
-				goX = 0;
-				goY = -1;
-			}
-			if (direction = "NE") {
-				goY = 1;
-				goX = 1;
-			}
-			if (direction = "NW") {
-				goY = 1;
-				goX = -1;
-			}
-			if (direction = "SE") {
-				goY = -1;
-				goX = 1;
-			}
-			if (direction = "SW") {
-				goY = -1;
-				goX = -1;
-			}
-			goX = 0 - goX;
-			goY = 0 - goY;
-
-				// Test If Letters Fit
-			var letters = word.split("");
-					// Function to Test Letter:Coord Fills Against Original Puzzle Table
-			function testLetter(testL, testX, testY) {
-				// Script To Find Items From Puzzle Table Array Based On Coordinates
-				var originalLetter = "";
-				for (var cOriginTable = 0; cOriginTable < puzzleTable.length; cOriginTable++) {
-					if (puzzleTable[cOriginTable].x == testX && puzzleTable[cOriginTable].y == testY) {
-						originalLetter = puzzleTable[cOriginTable].l;
-					}
-				}
-				// Finding If It Is Different Or Empty
-				if (originalLetter == "" || originalLetter == testL) {
-					return true;
-				} else {
-					return false;
-				}
-			}
-			var isOkay = true;
-			//console.log("Letters: '" + letters + "'");
-			for (var cToTest = 0; cToTest < letters.length; cToTest++) {
-				console.log(((goX * cToTest) + originX) + " : . : " + ((goY * cToTest) + originY));
-				console.log(cToTest);
-				if (testLetter(letters[cToTest], ((goX * cToTest) + originX), ((goY * cToTest) + originY)) != true) {
-					isOkay = false;
-				}
-			}
-			// Actually Fill If All Letters Are Okay
-			console.log("Is Still Okay: '" + isOkay + "'");
-			var found = true;
-			if (isOkay) {
-				for (var letterItem = 0; letterItem < letters.length; letterItem++) {
-					// Coordinates Of Current Letter
-					letter = letters[letterItem];
-					testX = (goX * letterItem) + originX;
-					testY = (goY * letterItem) + originY;
-					// Script To Find Items From Puzzle Table Array Based On Coordinates & Change Their Letter Fills
-					for (var cPuzzleTableItem = 0; cPuzzleTableItem < puzzleTable.length; cPuzzleTableItem++) {
-						if (puzzleTable[cPuzzleTableItem].x == testX && puzzleTable[cPuzzleTableItem].y == testY) {
-							puzzleTable[cPuzzleTableItem].l = letter;
-						}
-					}
-				}
-				found = true;
-			} else {
-				//found = false;
-			}
+	console.log("Ending Table: '" + puzzleTable + "'");
+	// TEMP: Script To Show Puzzle Table Array
+	for (var i = 0; i < puzzleTable.length; i++) {
+		if (puzzleTable[i].l == "") {
+			puzzleTable[i].l = "█";
 		}
-		console.log(puzzleTable);
-		// TEMP: Script To Show Puzzle Table Array
-		for (var i = 0; i < puzzleTable.length; i++) {
-			if (puzzleTable[i].l == "") {
-				puzzleTable[i].l = "█";
-			}
-		}
-		var html = "";
-		var lastY = 0;
-		for (var i = 0; i < puzzleTable.length; i++) {
-			if (lastY != puzzleTable[i].y) {
-				html += "<br>"
-			}
-			html += puzzleTable[i].l + " ";
-			lastY = puzzleTable[i].y;
-		}
-		document.getElementById("tempDisplay").innerHTML = html;
 	}
+	var html = "";
+	var lastY = 0;
+	for (var i = 0; i < puzzleTable.length; i++) {
+		if (lastY != puzzleTable[i].y) {
+			html += "<br>"
+		}
+		html += puzzleTable[i].l + " ";
+		lastY = puzzleTable[i].y;
+	}
+	document.getElementById("tempDisplay").innerHTML = html;
 
 	/* List of Steps */
 	/*
