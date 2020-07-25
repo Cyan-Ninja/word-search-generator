@@ -216,13 +216,13 @@ function printCanvas() {
 		var line = answerLines[i];
 		ctx.fillStyle = "#a11";
 		ctx.font = "48px Arial";
-		ctx.fillText("⚪", 1000/puzzleWidth * line.x + (500 / puzzleWidth), 1000/puzzleWidth * line.y + 181.25);
+		ctx.fillText("⚪", 1000/puzzleWidth * line.x + (500 / puzzleWidth), 1000/puzzleWidth * line.y + 131.25);
 	}
 	ctx.fillStyle = "#111";
 	ctx.font = "32px Arial";
 	for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
 		var letterObject = puzzleTable[originTableItemNum];
-		ctx.fillText(letterObject.l, 1000/puzzleWidth * letterObject.x + (500 / puzzleWidth), 1000/puzzleWidth * letterObject.y + 175);
+		ctx.fillText(letterObject.l, 1000/puzzleWidth * letterObject.x + (500 / puzzleWidth), 1000/puzzleWidth * letterObject.y + 125);
 	}
 	ctx.fillStyle = "#111";
 	ctx.font = "64px Arial";
