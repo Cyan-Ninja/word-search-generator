@@ -202,8 +202,6 @@ function generatePuzzle() {
 		Fill In Every Blank Space
 	*/
 }
-generatePuzzle();
-console.log("- Default Run -");
 // Show On Canvas
 function printCanvas() {
 	var c = document.getElementById("canvas");
