@@ -220,9 +220,40 @@ function textDisplay() {
 }
 // Show On Canvas & Get Output Downloads
 function printCanvas() {
-	// Non-Answered Canvas Section
 	var c = document.getElementById("canvas");
 	var ctx = c.getContext("2d");
+	c.width = puzzleWidth * 50;
+	c.height = puzzleHeight * 50 + 75;
+	// Non-Answered Section
+	ctx.clearRect(0, 0, c.width, c.height);
+	ctx.textAlign = "center";
+	ctx.fillStyle = "#111";
+	ctx.font = "25px Arial";
+	for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
+		var letterObject = puzzleTable[originTableItemNum];
+		ctx.fillText(letterObject.l, 50 * letterObject.x + 25, 50 * letterObject.y + 100);
+	}
+	ctx.font = "40px Arial";
+	ctx.fillText(puzzleTitle, c.width / 2, 50);
+	var imagePng = c.toDataURL('image/png');
+	document.getElementById("imageDownload").href = imagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+	// Answered Section
+	ctx.clearRect(0, 0, c.width, c.height);
+	ctx.font = "30px Arial";
+	for (var i = 0; i < answerLines.length; i++) {
+		var line = answerLines[i];
+		ctx.fillText("⚪", 50 * line.x + 25, 50 * line.y + 101.5625);
+	}
+	ctx.font = "25px Arial";
+	for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
+		var letterObject = puzzleTable[originTableItemNum];
+		ctx.fillText(letterObject.l, 50 * letterObject.x + 25, 50 * letterObject.y + 100);
+	}
+	ctx.font = "40px Arial";
+	ctx.fillText(puzzleTitle, c.width / 2, 50);
+	var imagePng = c.toDataURL('image/png');
+	document.getElementById("imageDownload").href = imagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+	/*// Non-Answered Canvas Section
 	ctx.clearRect(0, 0, c.width, c.height);
 	ctx.textAlign = "center";
 	ctx.fillStyle = "#111";
@@ -258,7 +289,7 @@ function printCanvas() {
 	console.log(1000/puzzleTitle.length);
 	ctx.fillText(puzzleTitle, 500, 64);
 	var answeredImagePng = c.toDataURL('image/png');
-	document.getElementById("answeredImageDownload").href = answeredImagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+	document.getElementById("answeredImageDownload").href = answeredImagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');*/
 }
 // Copy Text Function
 function copyText() {
