@@ -72,16 +72,16 @@ function generatePuzzle() {
 			console.log("Word: " + word + "  OriginXY: " + originX + ":" + originY);
 			// Get Direction
 			var directions = [];
-			if ((originY > word.length)) {
+			if (originY > word.length) {
 				directions.push("N");
 			}
-			if ((originX > word.length)) {
+			if (originX > word.length) {
 				directions.push("W");
 			}
-			if ((originY + word.length <= puzzleHeight)) {
+			if (originY + word.length <= puzzleHeight) {
 				directions.push("S");
 			}
-			if ((originX + word.length <= puzzleWidth)) {
+			if (originX + word.length <= puzzleWidth) {
 				directions.push("E");
 			}
 			if ((originY > word.length) && (originX > word.length) && (document.getElementById("diagonalsCheck").checked)) {
