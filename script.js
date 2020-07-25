@@ -214,6 +214,9 @@ function tempDisplay() {
 	document.getElementById("tempDisplay").innerHTML = html;
 	document.getElementById("tempDisplay").style.fontFamily = "monospace";
 }
+generatePuzzle();
+tempDisplay();
+console.log("Default Run");
 // Canvas
 	// Context
 var c = document.getElementById("canvas");
