@@ -216,7 +216,7 @@ function tempDisplay() {
 }
 generatePuzzle();
 tempDisplay();
-console.log("Default Run");
+console.log("- Default Run -");
 // Canvas
 	// Context
 var c = document.getElementById("canvas");
