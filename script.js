@@ -5,7 +5,7 @@ function setWordList() {
 	let wordListUncut = document.getElementById("wordList").value;
 	wordList = wordListUncut.split("\n");
 	for (var cWord = 0; cWord < wordList.length; cWord++) {
-		wordList[cWord] = wordList[cWord].replaceAll(" ", "").toUpperCase(); // Remove Spaces & Uppercase All
+		wordList[cWord] = wordList[cWord].toUpperCase(); // Remove Spaces & Uppercase All
 		/*if (wordList[cWord] == "") { // Remove Empty Items
 			wordList.splice(cWord, 1);
 		}*/ // Not Being Used (At Least Yet)
