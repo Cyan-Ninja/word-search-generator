@@ -70,28 +70,48 @@ function generatePuzzle() {
 			// Get Direction
 			var directions = [];
 			if (originY > word.length) {
+				if (document.getElementById("nCheck").checked) {
 				directions.push("N");
+				}
 			}
 			if (originX > word.length) {
+				if (document.getElementById("wCheck").checked) {
 				directions.push("W");
+				}
 			}
 			if (originY + word.length <= puzzleHeight) {
+				if (document.getElementById("sCheck").checked) {
 				directions.push("S");
+				}
 			}
 			if (originX + word.length <= puzzleWidth) {
+				if (document.getElementById("eCheck").checked) {
 				directions.push("E");
+				}
 			}
-			if ((originY > word.length) && (originX > word.length) && (document.getElementById("diagonalsCheck").checked)) {
+			if ((originY > word.length) && (originX > word.length)) {
+				if (document.getElementById("nwCheck").checked) {
 				directions.push("NW");
+				}
 			}
-			if ((originY > word.length) && (originX + word.length <= puzzleWidth) && (document.getElementById("diagonalsCheck").checked)) {
+			if ((originY > word.length) && (originX + word.length <= puzzleWidth)) {
+				if (document.getElementById("neCheck").checked) {
 				directions.push("NE");
+				}
 			}
-			if ((originY + word.length <= puzzleWidth) && (originX > word.length) && (document.getElementById("diagonalsCheck").checked)) {
+			if ((originY + word.length <= puzzleWidth) && (originX > word.length)) {
+				if (document.getElementById("swCheck").checked) {
 				directions.push("SW");
+				}
 			}
-			if ((originY + word.length <= puzzleWidth) && (originX + word.length <= puzzleWidth) && (document.getElementById("diagonalsCheck").checked)) {
+			if ((originY + word.length <= puzzleWidth) && (originX + word.length <= puzzleWidth)) {
+				if (document.getElementById("seCheck").checked) {
 				directions.push("SE");
+				}
+			}
+			console.log(directions);
+			if (directions.length == 0) {
+				continue;
 			}
 			var direction = directions[Math.floor(Math.random() * directions.length)];
 			var goX = 0;
@@ -157,8 +177,9 @@ function generatePuzzle() {
 					var letterY = (goY * letterItemNum) + originY;
 					for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
 						if (puzzleTable[originTableItemNum].x == letterX && puzzleTable[originTableItemNum].y == letterY) {
-							// Continue Here
+							// Actually Set The Letter
 							puzzleTable[originTableItemNum].l = letter;
+							// TEMP: Circle Marking Method
 							answerLines.push({x: letterX, y: letterY});
 						}
 					}
