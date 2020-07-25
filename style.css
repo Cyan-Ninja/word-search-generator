@@ -67,6 +67,7 @@ width: 25vw;
 }
 
 canvas {
+	background-color: #fff;
 	align-self: center;
 	width: 50vw;
 	height: 50vw;

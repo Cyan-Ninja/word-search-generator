@@ -36,19 +36,15 @@ function setTitle() {
 	puzzleTitle = document.getElementById("puzzleTitle").value;
 	//console.log("Set Puzzle Title: '" + puzzleTitle + "'");
 }
-// Mark Display Image Button
-var markImage = false;
-function markImageButton() {
-	markImage = !markImage;
-	console.log("Set Mark Image: '" + markImage + "'");
-}
 // Puzzle Generation Algorithm
 var puzzleTable = [];
+var answerLines = [];
 function generatePuzzle() {
 	// Run All Set Commands
 	setWordList();
 	setSize();
 	setTitle();
+	answerLines = [];
 	// Create Array With Coordinates and Letter Fills
 	puzzleTable = [];
 	for (var y = 0; y < puzzleHeight; y++) {
@@ -139,10 +135,10 @@ function generatePuzzle() {
 				if (letterX < 1 || letterX > puzzleWidth - 1 || letterY < 1 || letterY > puzzleHeight - 1) {
 					isOkay = false;
 				} else {
-					for (var OriginTableItemNum = 0; OriginTableItemNum < puzzleTable.length; OriginTableItemNum++) {
-						if (puzzleTable[OriginTableItemNum].x == letterX && puzzleTable[OriginTableItemNum].y == letterY) {
+					for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
+						if (puzzleTable[originTableItemNum].x == letterX && puzzleTable[originTableItemNum].y == letterY) {
 							// Continue Here
-							if ((puzzleTable[OriginTableItemNum].l == "") || (puzzleTable[OriginTableItemNum].l == letter)) {
+							if ((puzzleTable[originTableItemNum].l == "") || (puzzleTable[originTableItemNum].l == letter)) {
 								// It Is Valid & Nothing Should Happen
 							} else {
 								isOkay = false; // It Is Not Valid & It Should Not Continue
@@ -158,20 +154,31 @@ function generatePuzzle() {
 					var letter = letters[letterItemNum];
 					var letterX = (goX * letterItemNum) + originX;
 					var letterY = (goY * letterItemNum) + originY;
-					for (var OriginTableItemNum = 0; OriginTableItemNum < puzzleTable.length; OriginTableItemNum++) {
-						if (puzzleTable[OriginTableItemNum].x == letterX && puzzleTable[OriginTableItemNum].y == letterY) {
+					for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
+						if (puzzleTable[originTableItemNum].x == letterX && puzzleTable[originTableItemNum].y == letterY) {
 							// Continue Here
-							puzzleTable[OriginTableItemNum].l = letter;
+							puzzleTable[originTableItemNum].l = letter;
+							answerLines.push({x: letterX, y: letterY});
 						}
 					}
 				}
+
 				found = true;
 			}
 		}
 	}
 	console.log("Ending Table:");
 	console.log(puzzleTable);
-	tempDisplay();
+	function fillEmptyLetters() {
+		for (var i = 0; i < puzzleTable.length; i++) {
+			if (puzzleTable[i].l == "") {
+				let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "W", "Z"];
+				puzzleTable[i].l = alphabet[Math.floor(Math.random() * alphabet.length)]
+			}
+		}
+	}
+	fillEmptyLetters();
+	printCanvas();
 
 	/* List of Steps */
 	/*
@@ -195,36 +202,31 @@ function generatePuzzle() {
 		Fill In Every Blank Space
 	*/
 }
-// TEMP: Script To Show Puzzle Table Array
-function tempDisplay() {
-	for (var i = 0; i < puzzleTable.length; i++) {
-		if (puzzleTable[i].l == "") {
-			puzzleTable[i].l = "█"; // It Is █ To Shown Empty Cells
-		}
-	}
-	var html = "";
-	var lastY = 0;
-	for (var i = 0; i < puzzleTable.length; i++) {
-		if (lastY != puzzleTable[i].y) {
-			html += "<br>"
-		}
-		html += puzzleTable[i].l + " "; // Just Have " " Since Spaces Look Nicer
-		lastY = puzzleTable[i].y;
-	}
-	document.getElementById("tempDisplay").innerHTML = html;
-	document.getElementById("tempDisplay").style.fontFamily = "monospace";
-}
 generatePuzzle();
-tempDisplay();
 console.log("- Default Run -");
-// Canvas
-	// Context
-var c = document.getElementById("canvas");
-var ctx = c.getContext("2d");
-	// Example Background Colour
-ctx.fillStyle = "#044";
-ctx.fillRect(0, 0, c.width, c.height);
-	// Example Text
-ctx.fillStyle = "#dee";
-ctx.font = "64px Arial";
-ctx.fillText("I will be your image!", 50, 100);
+// Show On Canvas
+function printCanvas() {
+	var c = document.getElementById("canvas");
+	var ctx = c.getContext("2d");
+	ctx.clearRect(0, 0, c.width, c.height);
+	ctx.textAlign = "center";
+	ctx.fillStyle = "#111";
+	ctx.font = "32px Arial";
+	for (var i = 0; i < answerLines.length; i++) {
+		var line = answerLines[i];
+		ctx.fillStyle = "#a11";
+		ctx.font = "48px Arial";
+		ctx.fillText("⚪", 1000/puzzleWidth * line.x + (500 / puzzleWidth), 1000/puzzleWidth * line.y + 181.25);
+	}
+	ctx.fillStyle = "#111";
+	ctx.font = "32px Arial";
+	for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
+		var letterObject = puzzleTable[originTableItemNum];
+		ctx.fillText(letterObject.l, 1000/puzzleWidth * letterObject.x + (500 / puzzleWidth), 1000/puzzleWidth * letterObject.y + 175);
+	}
+	ctx.fillStyle = "#111";
+	ctx.font = "64px Arial";
+	console.log(1000/puzzleTitle.length);
+	ctx.fillText(puzzleTitle, 500, 64);
+}
+// Outputs

@@ -25,10 +25,8 @@ Type or copy/paste your word list here, separated by breaklines."></textarea>
 			<input type="text" id="puzzleTitle" placeholder="Enter Title (Default: Empty)"><br>
 			<input type="checkbox" id="diagonalsCheck" class="checkbox" checked="true"> Diagonal Words<br>
 			<button type="button" id="generatePuzzle" onclick="generatePuzzle();">Generate Puzzle</button><br>
-			<button type="button" onclick="markImageButton();">Mark Display Image</button><br>
 			<button type="button" onclick="document.getElementById('outputs').style.display = 'flex';">Show Outputs</button>
 		</div>
-			<pre id="tempDisplay"></pre> <!-- TEMP: Temporary Display (Text Not Canvas) -->
 			<canvas id="canvas" width="1000px" height="1100px;">Your browser doesn't support the canvas tag, please update to a newer browser.</canvas>
 		</div>
 		<div id="outputs">
