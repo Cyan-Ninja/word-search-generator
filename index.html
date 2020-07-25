@@ -28,12 +28,12 @@ Type or copy/paste your word list here, separated by breaklines."></textarea>
 			<button type="button" onclick="document.getElementById('outputs').style.display = 'flex';">Show Outputs</button>
 		</div>
 			<canvas id="canvas" width="1000px" height="1100px;">Your browser doesn't support the canvas tag, please update to a newer browser.</canvas>
+			<pre id="textDisplay"></pre>
 		</div>
 		<div id="outputs">
-			<a href="" download="Image.png" class="download" id="imageDownload">[Download]<br>[Image]</a><br>
-			<a href="" download="AnsweredImage.png" class="download" id="answeredImageDownload">[Download]<br>[Answered]</a><br>
-			<button type="button" id="copyText">[Copy]<br>[Text]</button>
-			<button type="button" id="copyMarkdown">[Copy]<br>[Markdown]</button>
+			<a href="" download="Puzzle.png" class="download" id="imageDownload">[Download]<br>[Image]</a><br>
+			<a href="" download="AnsweredPuzzle.png" class="download" id="answeredImageDownload">[Download]<br>[Answered]</a><br>
+			<button type="button" id="copyText" onclick="copyText();">[Copy]<br>[Text]</button>
 			<button type="button" style="margin:0;width:5vw;height:5vh;flex:initial;align-self:flex-start;" onclick="document.getElementById('outputs').style.display = 'none';">X</button>
 		</div>
 <script src="script.js" charset="utf-8" type="text/javascript"></script>

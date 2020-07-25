@@ -178,6 +178,7 @@ function generatePuzzle() {
 		}
 	}
 	fillEmptyLetters();
+	textDisplay();
 	printCanvas();
 
 	/* List of Steps */
@@ -202,21 +203,50 @@ function generatePuzzle() {
 		Fill In Every Blank Space
 	*/
 }
+// Show Puzzle Table Array As Text
+function textDisplay() {
+	var html = "";
+	var lastY = 0;
+	for (var i = 0; i < puzzleTable.length; i++) {
+		if (lastY != puzzleTable[i].y) {
+			html += "<br>"
+		}
+		html += puzzleTable[i].l + " "; // Just Have " " Since Spaces Look Nicer
+		lastY = puzzleTable[i].y;
+	}
+	document.getElementById("textDisplay").innerHTML = html;
+	document.getElementById("textDisplay").style.fontFamily = "monospace";
+}
 // Show On Canvas & Get Output Downloads
 function printCanvas() {
+	// Non-Answered Canvas Section
 	var c = document.getElementById("canvas");
 	var ctx = c.getContext("2d");
 	ctx.clearRect(0, 0, c.width, c.height);
 	ctx.textAlign = "center";
 	ctx.fillStyle = "#111";
 	ctx.font = "32px Arial";
-	for (var i = 0; i < answerLines.length; i++) {
-		var line = answerLines[i];
-		ctx.fillStyle = "#a11";
-		ctx.font = "48px Arial";
-		ctx.fillText("⚪", 1000/puzzleWidth * line.x + (500 / puzzleWidth), 1000/puzzleWidth * line.y + 131.25);
+	for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
+		var letterObject = puzzleTable[originTableItemNum];
+		ctx.fillText(letterObject.l, 1000/puzzleWidth * letterObject.x + (500 / puzzleWidth), 1000/puzzleWidth * letterObject.y + 125);
 	}
 	ctx.fillStyle = "#111";
+	ctx.font = "64px Arial";
+	console.log(1000/puzzleTitle.length);
+	ctx.fillText(puzzleTitle, 500, 64);
+	var imagePng = c.toDataURL('image/png');
+	document.getElementById("imageDownload").href = imagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+	// Answered Canvas Section
+	var c = document.getElementById("canvas");
+	var ctx = c.getContext("2d");
+	ctx.clearRect(0, 0, c.width, c.height);
+	ctx.textAlign = "center";
+	ctx.fillStyle = "#111";
+	ctx.font = "48px Arial";
+	for (var i = 0; i < answerLines.length; i++) {
+		var line = answerLines[i];
+		ctx.fillText("⚪", 1000/puzzleWidth * line.x + (500 / puzzleWidth), 1000/puzzleWidth * line.y + 131.25);
+	}
 	ctx.font = "32px Arial";
 	for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
 		var letterObject = puzzleTable[originTableItemNum];
@@ -229,6 +259,7 @@ function printCanvas() {
 	var answeredImagePng = c.toDataURL('image/png');
 	document.getElementById("answeredImageDownload").href = answeredImagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
 }
-	// Copy Text
-
-	// Copy Markdown
+// Copy Text Function
+function copyText() {
+	alert("Copy the text displayed at the bottom of the page.");
+}
