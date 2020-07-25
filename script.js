@@ -72,10 +72,10 @@ function generatePuzzle() {
 			console.log("Word: " + word + "  OriginXY: " + originX + ":" + originY);
 			// Get Direction
 			var directions = [];
-			if ((originY > word.length) && (document.getElementById("reversesCheck").checked)) {
+			if ((originY > word.length)) {
 				directions.push("N");
 			}
-			if ((originX > word.length) && (document.getElementById("reversesCheck").checked)) {
+			if ((originX > word.length)) {
 				directions.push("W");
 			}
 			if ((originY + word.length <= puzzleHeight)) {
@@ -84,13 +84,13 @@ function generatePuzzle() {
 			if ((originX + word.length <= puzzleWidth)) {
 				directions.push("E");
 			}
-			if ((originY > word.length) && (originX > word.length) && (document.getElementById("diagonalsCheck").checked) && (document.getElementById("reversesCheck").checked)) {
+			if ((originY > word.length) && (originX > word.length) && (document.getElementById("diagonalsCheck").checked)) {
 				directions.push("NW");
 			}
-			if ((originY > word.length) && (originX + word.length <= puzzleWidth) && (document.getElementById("diagonalsCheck").checked) && (document.getElementById("reversesCheck").checked)) {
+			if ((originY > word.length) && (originX + word.length <= puzzleWidth) && (document.getElementById("diagonalsCheck").checked)) {
 				directions.push("NE");
 			}
-			if ((originY + word.length <= puzzleWidth) && (originX > word.length) && (document.getElementById("diagonalsCheck").checked) && (document.getElementById("reversesCheck").checked)) {
+			if ((originY + word.length <= puzzleWidth) && (originX > word.length) && (document.getElementById("diagonalsCheck").checked)) {
 				directions.push("SW");
 			}
 			if ((originY + word.length <= puzzleWidth) && (originX + word.length <= puzzleWidth) && (document.getElementById("diagonalsCheck").checked)) {
