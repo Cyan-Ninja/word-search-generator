@@ -312,7 +312,3 @@ function printCanvas() {
 	var answeredImagePng = c.toDataURL('image/png');
 	document.getElementById("answeredImageDownload").href = answeredImagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');*/
 }
-// Copy Text Function
-function copyText() {
-	alert("Copy the text displayed at the bottom of the page.");
-}
