@@ -230,3 +230,10 @@ function printCanvas() {
 	ctx.fillText(puzzleTitle, 500, 64);
 }
 // Outputs
+	// Download Image
+
+	// Download Answered
+
+	// Copy Text
+
+	// Copy Markdown
