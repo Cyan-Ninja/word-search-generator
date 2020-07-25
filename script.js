@@ -202,7 +202,7 @@ function generatePuzzle() {
 		Fill In Every Blank Space
 	*/
 }
-// Show On Canvas
+// Show On Canvas & Get Output Downloads
 function printCanvas() {
 	var c = document.getElementById("canvas");
 	var ctx = c.getContext("2d");
@@ -226,12 +226,9 @@ function printCanvas() {
 	ctx.font = "64px Arial";
 	console.log(1000/puzzleTitle.length);
 	ctx.fillText(puzzleTitle, 500, 64);
+	var answeredImagePng = c.toDataURL('image/png');
+	document.getElementById("answeredImageDownload").href = answeredImagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
 }
-// Outputs
-	// Download Image
-
-	// Download Answered
-
 	// Copy Text
 
 	// Copy Markdown
