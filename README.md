@@ -1,4 +1,4 @@
-# Word Search Generatot
+# Word Search Generator
 
 A minimalistic find-a-word generator for a client.
 
