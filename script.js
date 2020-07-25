@@ -251,8 +251,8 @@ function printCanvas() {
 	}
 	ctx.font = "40px Arial";
 	ctx.fillText(puzzleTitle, c.width / 2, 50);
-	var imagePng = c.toDataURL('image/png');
-	document.getElementById("imageDownload").href = imagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+	var answeredImagePng = c.toDataURL('image/png');
+	document.getElementById("answeredImageDownload").href = answeredImagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
 	/*// Non-Answered Canvas Section
 	ctx.clearRect(0, 0, c.width, c.height);
 	ctx.textAlign = "center";
