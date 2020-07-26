@@ -179,12 +179,13 @@ function generatePuzzle() {
 						if (puzzleTable[originTableItemNum].x == letterX && puzzleTable[originTableItemNum].y == letterY) {
 							// Actually Set The Letter
 							puzzleTable[originTableItemNum].l = letter;
-							// TEMP: Circle Marking Method
-							answerLines.push({x: letterX, y: letterY});
+							/*// TEMP: Circle Marking Method
+							answerLines.push({x: letterX, y: letterY});*/
 						}
 					}
 				}
-
+				// Add Answer Line
+				answerLines.push({sX: originX, sY: originY, eX: letterX, eY: letterY});
 				found = true;
 			}
 		}
@@ -239,15 +240,19 @@ function printCanvas() {
 	document.getElementById("imageDownload").href = imagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
 	// Answered Section
 	ctx.clearRect(0, 0, c.width, c.height);
-	ctx.font = "30px Arial";
-	for (var i = 0; i < answerLines.length; i++) {
-		var line = answerLines[i];
-		ctx.fillText("⚪", 50 * line.x + 25, 50 * line.y + 101.5625);
-	}
 	ctx.font = "25px Arial";
 	for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
 		var letterObject = puzzleTable[originTableItemNum];
 		ctx.fillText(letterObject.l, 50 * letterObject.x + 25, 50 * letterObject.y + 100);
+	}
+	ctx.strokeStyle = "#d11";
+	ctx.lineWidth = 5;
+	for (var i = 0; i < answerLines.length; i++) {
+		var line = answerLines[i];
+		ctx.beginPath();
+		ctx.moveTo(50 * line.sX + 25, 50 * line.sY + 87.5);
+		ctx.lineTo(50 * line.eX + 25, 50 * line.eY + 87.5);
+		ctx.stroke();
 	}
 	ctx.font = "40px Arial";
 	ctx.fillText(puzzleTitle, c.width / 2, 50);
