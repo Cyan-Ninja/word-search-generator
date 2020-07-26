@@ -253,8 +253,8 @@ function printCanvas() {
 		ctx.strokeStyle = gradient; // Was Static Colour: "#d11"
 		ctx.lineWidth = 5;
 		ctx.beginPath();
-		ctx.moveTo(50 * line.sX + 25, 50 * line.sY + 87.5);
-		ctx.lineTo(50 * line.eX + 25, 50 * line.eY + 87.5);
+		ctx.moveTo(50 * line.sX + 25, 50 * line.sY + 90.625);
+		ctx.lineTo(50 * line.eX + 25, 50 * line.eY + 90.625);
 		ctx.stroke();
 	}
 	ctx.font = "40px Arial";
