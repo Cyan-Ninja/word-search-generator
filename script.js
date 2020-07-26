@@ -257,8 +257,8 @@ function printCanvas() {
 	}
 	for (var i = 0; i < answerLines.length; i++) {
 		var line = answerLines[i];
-		ctx.fillStyle = "rgba(221,17,17,0.5)";
-		ctx.strokeStyle = "rgba(221,17,17,0.5)";
+		ctx.fillStyle = "rgba(221,17,17,1)";
+		ctx.strokeStyle = "rgba(221,17,17,1)";
 		/*ctx.beginPath();
 		ctx.lineWidth = 1;
 		ctx.moveTo(50 * line.sX + 25, 50 * line.sY + 93.75);
@@ -273,7 +273,7 @@ function printCanvas() {
 		ctx.stroke();
 		ctx.stroke();
 		ctx.closePath();*/ // Not Working, For Reference
-		/*ctx.lineWidth = 15;
+		ctx.lineWidth = 15;
 		ctx.beginPath();
 		ctx.moveTo(50 * line.sX + 25, 50 * line.sY + 93.75);
 		ctx.lineTo(50 * line.eX + 25, 50 * line.eY + 93.75);
@@ -286,8 +286,8 @@ function printCanvas() {
 		ctx.beginPath();
 		ctx.arc(50 * line.eX + 25, 50 * line.eY + 93.75, 0.390625, 0, 2 * Math.PI);
 		ctx.stroke();
-		ctx.closePath();*/ // Working
-		ctx.beginPath();
+		ctx.closePath(); // Working
+		/*ctx.beginPath();
 		ctx.arc(50 * line.sX + 25, 50 * line.sY + 93.75, 12.5, 0, 2 * Math.PI);
 		ctx.lineWidth = 1;
 		ctx.moveTo(50 * line.sX + 25, 50 * line.sY + 93.75);
@@ -296,7 +296,7 @@ function printCanvas() {
 		ctx.arc(50 * line.eX + 25, 50 * line.eY + 93.75, 12.5, 0, 2 * Math.PI);
 		ctx.stroke();
 		ctx.fill();
-		ctx.closePath();
+		ctx.closePath();*/
 	}
 	if (document.getElementById("puzzleFont").value != "") {
 		ctx.font = "40px " + document.getElementById("puzzleFont").value;
