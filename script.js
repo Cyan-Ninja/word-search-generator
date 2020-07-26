@@ -203,28 +203,6 @@ function generatePuzzle() {
 	wordListDisplay();
 	textDisplay();
 	printCanvas();
-
-	/* List of Steps */
-	/*
-		Create Array With Objects With [X: n, Y: n, L: n] For Coordinates + Filled Letter
-		For Each Word {
-			While (Until Correct Coords+Direction is Found & Set or Too many Tries) {
-				Choose Random Coordinate
-
-				Get & Choose Directions (With 'goN's)
-
-				While (directionsAvailable != []) {
-					Choose An Available Direction From The Array
-					Test Each Letter The Word Would Take Up to See if It Fails
-						Succeeds: Add Those Letters To The First Array of All Coordinates and Letter Fills & Break From Current Main EachWord Loop
-						Fails: Remove This Direction From The Array & The While Loop Loops Again, But Without This Direction
-				}
-				// If The Code Reaches Here, It Can't Find Any Correct Direction // It Will Loop The Coordinate Search Loop
-				// NOTE: I May Implement A Feature That Will Stop The Whole Generation & Alert That It Failed to Find Any Possible Placement For A Word In This Run
-			}
-		}
-		Fill In Every Blank Space
-	*/
 }
 // Show Puzzle Table Array As Text
 function textDisplay() {
@@ -275,43 +253,6 @@ function printCanvas() {
 	ctx.fillText(puzzleTitle, c.width / 2, 50);
 	var answeredImagePng = c.toDataURL('image/png');
 	document.getElementById("answeredImageDownload").href = answeredImagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
-	/*// Non-Answered Canvas Section
-	ctx.clearRect(0, 0, c.width, c.height);
-	ctx.textAlign = "center";
-	ctx.fillStyle = "#111";
-	ctx.font = "32px Arial";
-	for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
-		var letterObject = puzzleTable[originTableItemNum];
-		ctx.fillText(letterObject.l, 1000/puzzleWidth * letterObject.x + (500 / puzzleWidth), 1000/puzzleWidth * letterObject.y + 125);
-	}
-	ctx.fillStyle = "#111";
-	ctx.font = "64px Arial";
-	console.log(1000/puzzleTitle.length);
-	ctx.fillText(puzzleTitle, 500, 64);
-	var imagePng = c.toDataURL('image/png');
-	document.getElementById("imageDownload").href = imagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
-	// Answered Canvas Section
-	var c = document.getElementById("canvas");
-	var ctx = c.getContext("2d");
-	ctx.clearRect(0, 0, c.width, c.height);
-	ctx.textAlign = "center";
-	ctx.fillStyle = "#111";
-	ctx.font = "48px Arial";
-	for (var i = 0; i < answerLines.length; i++) {
-		var line = answerLines[i];
-		ctx.fillText("⚪", 1000/puzzleWidth * line.x + (500 / puzzleWidth), 1000/puzzleWidth * line.y + 131.25);
-	}
-	ctx.font = "32px Arial";
-	for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
-		var letterObject = puzzleTable[originTableItemNum];
-		ctx.fillText(letterObject.l, 1000/puzzleWidth * letterObject.x + (500 / puzzleWidth), 1000/puzzleWidth * letterObject.y + 125);
-	}
-	ctx.fillStyle = "#111";
-	ctx.font = "64px Arial";
-	console.log(1000/puzzleTitle.length);
-	ctx.fillText(puzzleTitle, 500, 64);
-	var answeredImagePng = c.toDataURL('image/png');
-	document.getElementById("answeredImageDownload").href = answeredImagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');*/
 }
 // Display List Of Words
 function wordListDisplay() {
