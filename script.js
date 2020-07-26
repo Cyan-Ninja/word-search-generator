@@ -179,13 +179,11 @@ function generatePuzzle() {
 						if (puzzleTable[originTableItemNum].x == letterX && puzzleTable[originTableItemNum].y == letterY) {
 							// Actually Set The Letter
 							puzzleTable[originTableItemNum].l = letter;
-							/*// TEMP: Circle Marking Method
-							answerLines.push({x: letterX, y: letterY});*/
 						}
 					}
 				}
 				// Add Answer Line
-				answerLines.push({sX: originX, sY: originY, eX: letterX, eY: letterY});
+				answerLines.push({sX: originX, sY: originY, eX: letterX, eY: letterY, gX: goX, gY: goY});
 				found = true;
 			}
 		}
@@ -245,10 +243,15 @@ function printCanvas() {
 		var letterObject = puzzleTable[originTableItemNum];
 		ctx.fillText(letterObject.l, 50 * letterObject.x + 25, 50 * letterObject.y + 100);
 	}
-	ctx.strokeStyle = "#d11";
-	ctx.lineWidth = 5;
 	for (var i = 0; i < answerLines.length; i++) {
 		var line = answerLines[i];
+		var gradient = ctx.createLinearGradient(50 * line.sX + 25, 50 * line.sY + 87.5, 50 * line.eX + 25, 50 * line.eY + 87.5);
+		gradient.addColorStop("0", "rgba(0,0,0,0)");
+		gradient.addColorStop("0.01", "rgba(221,17,17,1)");
+		gradient.addColorStop("0.99", "rgba(221,17,17,1)");
+		gradient.addColorStop("1", "rgba(0,0,0,0)");
+		ctx.strokeStyle = gradient; // Was Static Colour: "#d11"
+		ctx.lineWidth = 5;
 		ctx.beginPath();
 		ctx.moveTo(50 * line.sX + 25, 50 * line.sY + 87.5);
 		ctx.lineTo(50 * line.eX + 25, 50 * line.eY + 87.5);
