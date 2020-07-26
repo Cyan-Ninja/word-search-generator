@@ -73,36 +73,18 @@ canvas {
 	float: right;
 }
 
-#outputs {
-	width: 90vw;
-	height: 10vh;
-	position: fixed;
-	top: 5vh;
-	left: 5vw;
-	border: solid 0.25vw #ccc;
-	background-color: #ddd;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	display: none;
-}
-
-#outputs a {
-	font-size: 2.75vh;
-	margin: 1vw 1vh;
-	flex: 1;
-	height: 8vh;
-	border: solid 0.25vw #bbb;
-	background-color: #ccc;
+a {
 	text-decoration: none;
 }
 
-#outputs button {
-	font-size: 2.75vh;
-	margin: 1vw 1vh;
-	flex: 1;
-	height: 8vh;
-	border: solid 0.25vw #bbb;
-	background-color: #ccc;
-	text-decoration: none;
+a:hover {
+	text-decoration: underline overline;
+}
+
+a:focus {
+	text-decoration: underline overline;
+}
+
+a:active {
+	text-decoration: underline overline;
 }

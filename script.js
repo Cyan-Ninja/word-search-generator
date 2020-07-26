@@ -200,6 +200,7 @@ function generatePuzzle() {
 		}
 	}
 	fillEmptyLetters();
+	wordListDisplay();
 	textDisplay();
 	printCanvas();
 
@@ -311,4 +312,12 @@ function printCanvas() {
 	ctx.fillText(puzzleTitle, 500, 64);
 	var answeredImagePng = c.toDataURL('image/png');
 	document.getElementById("answeredImageDownload").href = answeredImagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');*/
+}
+// Display List Of Words
+function wordListDisplay() {
+	var html = "";
+	for (var i = 0; i < wordList.length; i++) {
+		html += wordList[i] + "<br>";
+	}
+	document.getElementById("wordListDisplay").innerHTML = html;
 }

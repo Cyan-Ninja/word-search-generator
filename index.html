@@ -10,27 +10,28 @@
 		<h1 id="title">Word Search Generator</h1>
 		<div id="wrapper">
 			<div>
+				<h2>Word List Text Area</h2>
 			<textarea id="wordList" rows="10" cols="100" placeholder="
 
 
 
 
 Type or copy/paste your word list here, separated by breaklines."></textarea>
-			<div>
-					<input type="text" id="setWidth" placeholder="Enter Width (Default: 20)">
-			</div>
-			<div>
-				<input type="text" id="setHeight" placeholder="Enter Height (Default: 20)">
-			</div>
+			<h2>Options</h2>
+			<input type="text" id="setWidth" placeholder="Enter Width (Default: 20)">
+			<input type="text" id="setHeight" placeholder="Enter Height (Default: 20)">
 			<input type="text" id="puzzleTitle" placeholder="Enter Title (Default: Empty)"><br>
-			<input type="checkbox" id="diagonalsCheck" class="checkbox" checked="true"> Diagonal Words<br>
-			(<input type="checkbox" id="eCheck" class="checkbox" checked="true">→) (<input type="checkbox" id="seCheck" class="checkbox" checked="true">↘) (<input type="checkbox" id="sCheck" class="checkbox" checked="true">↓) (<input type="checkbox" id="swCheck" class="checkbox" checked="true">↙) (<input type="checkbox" id="wCheck" class="checkbox" checked="true">←) (<input type="checkbox" id="nwCheck" class="checkbox" checked="true">↖) (<input type="checkbox" id="nCheck" class="checkbox" checked="true">↑) (<input type="checkbox" id="neCheck" class="checkbox" checked="true">↗)<br>
+			Directions: (<input type="checkbox" id="eCheck" class="checkbox" checked="true">→) (<input type="checkbox" id="seCheck" class="checkbox" checked="true">↘) (<input type="checkbox" id="sCheck" class="checkbox" checked="true">↓) (<input type="checkbox" id="swCheck" class="checkbox" checked="true">↙) (<input type="checkbox" id="wCheck" class="checkbox" checked="true">←) (<input type="checkbox" id="nwCheck" class="checkbox" checked="true">↖) (<input type="checkbox" id="nCheck" class="checkbox" checked="true">↑) (<input type="checkbox" id="neCheck" class="checkbox" checked="true">↗)<br>
 			<button type="button" id="generatePuzzle" onclick="generatePuzzle();">Generate Puzzle</button><br>
 			<a href="" download="Puzzle.png" class="download" id="imageDownload">[Download Image]</a>
 			<a href="" download="AnsweredPuzzle.png" class="download" id="answeredImageDownload">[Download Answered Image]</a><br>
 		</div>
+			<h2>Image Display</h2>
 			<canvas id="canvas">Your browser doesn't support the canvas tag, please update to a newer browser.</canvas>
-			<pre id="textDisplay"></pre>
+			<h2>Text Display</h2>
+			<pre id="textDisplay">Generate Me First!</pre>
+			<h2>Word List</h2>
+			<pre id="wordListDisplay">Generate Me First!</pre>
 		</div>
 <script src="script.js" charset="utf-8" type="text/javascript"></script>
 	</body>
