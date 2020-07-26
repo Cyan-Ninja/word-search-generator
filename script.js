@@ -223,7 +223,7 @@ function printCanvas() {
 	var ctx = c.getContext("2d");
 	c.width = puzzleWidth * 50;
 	c.height = puzzleHeight * 50 + 75;
-	// Non-Answered Section
+	// Puzzle Form
 	ctx.clearRect(0, 0, c.width, c.height);
 	ctx.textAlign = "center";
 	ctx.fillStyle = "#111";
@@ -244,17 +244,7 @@ function printCanvas() {
 	ctx.fillText(puzzleTitle, c.width / 2, 50);
 	var imagePng = c.toDataURL('image/png');
 	document.getElementById("imageDownload").href = imagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
-	// Answered Section
-	ctx.clearRect(0, 0, c.width, c.height);
-	if (document.getElementById("puzzleFont").value != "") {
-		ctx.font = "25px " + document.getElementById("puzzleFont").value;
-	} else {
-		ctx.font = "25px Arial"
-	}
-	for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
-		var letterObject = puzzleTable[originTableItemNum];
-		ctx.fillText(letterObject.l, 50 * letterObject.x + 25, 50 * letterObject.y + 100);
-	}
+	// Answered Top Section
 	for (var i = 0; i < answerLines.length; i++) {
 		var line = answerLines[i];
 		ctx.fillStyle = "rgba(221,17,17,1)";
@@ -274,12 +264,8 @@ function printCanvas() {
 		ctx.stroke();
 		ctx.closePath();
 	}
-	if (document.getElementById("puzzleFont").value != "") {
-		ctx.font = "40px " + document.getElementById("puzzleFont").value;
-	} else {
-		ctx.font = "40px Arial"
-	}
-	ctx.fillText(puzzleTitle, c.width / 2, 50);
+	var answeredTopImagePng = c.toDataURL('image/png');
+	// Overlay
 	var answeredImagePng = c.toDataURL('image/png');
 	document.getElementById("answeredImageDownload").href = answeredImagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
 }
