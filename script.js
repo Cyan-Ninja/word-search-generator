@@ -257,16 +257,14 @@ function printCanvas() {
 	}
 	for (var i = 0; i < answerLines.length; i++) {
 		var line = answerLines[i];
-		var gradient = ctx.createLinearGradient(50 * line.sX + 25, 50 * line.sY + 88, 50 * line.eX + 25, 50 * line.eY + 88);
-		gradient.addColorStop("0", "rgba(0,0,0,0)");
-		gradient.addColorStop("0.01", "rgba(221,17,17,1)");
-		gradient.addColorStop("0.99", "rgba(221,17,17,1)");
-		gradient.addColorStop("1", "rgba(0,0,0,0)");
-		ctx.strokeStyle = gradient; // Was Static Colour: "#d11"
-		ctx.lineWidth = 5;
+		ctx.fillStyle = "rgba(221,17,17,0.5)";
+		ctx.strokeStyle = "rgba(221,17,17,0.5)";
+		ctx.lineWidth = 20;
 		ctx.beginPath();
-		ctx.moveTo(50 * line.sX + 25, 50 * line.sY + 90.625);
-		ctx.lineTo(50 * line.eX + 25, 50 * line.eY + 90.625);
+		ctx.arc(50 * line.sX + 25, 50 * line.sY + 90.625, 0.390625, 0, 2 * Math.PI);
+		ctx.moveTo(50 * line.sX + 25, 50 * line.sY + 87.5);
+		ctx.lineTo(50 * line.eX + 25, 50 * line.eY + 87.5);
+		ctx.arc(50 * line.eX + 25, 50 * line.eY + 90.625, 0.390625, 0, 2 * Math.PI);
 		ctx.stroke();
 	}
 	if (document.getElementById("puzzleFont").value != "") {
