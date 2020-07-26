@@ -227,25 +227,37 @@ function printCanvas() {
 	ctx.clearRect(0, 0, c.width, c.height);
 	ctx.textAlign = "center";
 	ctx.fillStyle = "#111";
-	ctx.font = "25px Arial";
+	if (document.getElementById("puzzleFont").value != "") {
+		ctx.font = "25px " + document.getElementById("puzzleFont").value;
+	} else {
+		ctx.font = "25px Arial"
+	}
 	for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
 		var letterObject = puzzleTable[originTableItemNum];
 		ctx.fillText(letterObject.l, 50 * letterObject.x + 25, 50 * letterObject.y + 100);
 	}
-	ctx.font = "40px Arial";
+	if (document.getElementById("puzzleFont").value != "") {
+		ctx.font = "40px " + document.getElementById("puzzleFont").value;
+	} else {
+		ctx.font = "40px Arial"
+	}
 	ctx.fillText(puzzleTitle, c.width / 2, 50);
 	var imagePng = c.toDataURL('image/png');
 	document.getElementById("imageDownload").href = imagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
 	// Answered Section
 	ctx.clearRect(0, 0, c.width, c.height);
-	ctx.font = "25px Arial";
+	if (document.getElementById("puzzleFont").value != "") {
+		ctx.font = "25px " + document.getElementById("puzzleFont").value;
+	} else {
+		ctx.font = "25px Arial"
+	}
 	for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
 		var letterObject = puzzleTable[originTableItemNum];
 		ctx.fillText(letterObject.l, 50 * letterObject.x + 25, 50 * letterObject.y + 100);
 	}
 	for (var i = 0; i < answerLines.length; i++) {
 		var line = answerLines[i];
-		var gradient = ctx.createLinearGradient(50 * line.sX + 25, 50 * line.sY + 87.5, 50 * line.eX + 25, 50 * line.eY + 87.5);
+		var gradient = ctx.createLinearGradient(50 * line.sX + 25, 50 * line.sY + 88, 50 * line.eX + 25, 50 * line.eY + 88);
 		gradient.addColorStop("0", "rgba(0,0,0,0)");
 		gradient.addColorStop("0.01", "rgba(221,17,17,1)");
 		gradient.addColorStop("0.99", "rgba(221,17,17,1)");
@@ -257,7 +269,11 @@ function printCanvas() {
 		ctx.lineTo(50 * line.eX + 25, 50 * line.eY + 90.625);
 		ctx.stroke();
 	}
-	ctx.font = "40px Arial";
+	if (document.getElementById("puzzleFont").value != "") {
+		ctx.font = "40px " + document.getElementById("puzzleFont").value;
+	} else {
+		ctx.font = "40px Arial"
+	}
 	ctx.fillText(puzzleTitle, c.width / 2, 50);
 	var answeredImagePng = c.toDataURL('image/png');
 	document.getElementById("answeredImageDownload").href = answeredImagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
