@@ -287,6 +287,16 @@ function printCanvas() {
 		ctx.arc(50 * line.eX + 25, 50 * line.eY + 93.75, 0.390625, 0, 2 * Math.PI);
 		ctx.stroke();
 		ctx.closePath();*/ // Working
+		ctx.beginPath();
+		ctx.arc(50 * line.sX + 25, 50 * line.sY + 93.75, 12.5, 0, 2 * Math.PI);
+		ctx.lineWidth = 1;
+		ctx.moveTo(50 * line.sX + 25, 50 * line.sY + 93.75);
+		ctx.lineTo(50 * line.eX + 25, 50 * line.eY + 93.75);
+		ctx.moveTo(50 * line.eX + 25, 50 * line.eY + 93.75);
+		ctx.arc(50 * line.eX + 25, 50 * line.eY + 93.75, 12.5, 0, 2 * Math.PI);
+		ctx.stroke();
+		ctx.fill();
+		ctx.closePath();
 	}
 	if (document.getElementById("puzzleFont").value != "") {
 		ctx.font = "40px " + document.getElementById("puzzleFont").value;
