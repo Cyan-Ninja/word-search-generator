@@ -316,8 +316,10 @@ function printCanvas() {
 // Display List Of Words
 function wordListDisplay() {
 	var html = "";
-	for (var i = 0; i < wordList.length; i++) {
-		html += wordList[i] + "<br>";
+	orderedWordList = JSON.parse(JSON.stringify(wordList));
+	orderedWordList.sort();
+	for (var i = 0; i < orderedWordList.length; i++) {
+		html += orderedWordList[i] + "<br>";
 	}
 	document.getElementById("wordListDisplay").innerHTML = html;
 }
