@@ -226,7 +226,7 @@ function printCanvas() {
 	// Puzzle Text
 	ctx.clearRect(0, 0, c.width, c.height);
 	ctx.textAlign = "center";
-	ctx.fillStyle = "#111";
+	ctx.fillStyle = "#000";
 	if (document.getElementById("puzzleFont").value != "") {
 		ctx.font = "25px " + document.getElementById("puzzleFont").value;
 	} else {
@@ -248,8 +248,8 @@ function printCanvas() {
 	ctx.clearRect(0, 0, c.width, c.height);
 	for (var i = 0; i < answerLines.length; i++) {
 		var line = answerLines[i];
-		ctx.strokeStyle = "rgba(256,96,96,1)";
-		ctx.lineWidth = 35;
+		ctx.strokeStyle = "rgb(255, 102, 102)";
+		ctx.lineWidth = 40;
 		ctx.beginPath();
 		ctx.moveTo(50 * line.sX + 25, 50 * line.sY + 90.625);
 		ctx.lineTo(50 * line.eX + 25, 50 * line.eY + 90.625);
@@ -266,7 +266,7 @@ function printCanvas() {
 	}
 		// Text Part Again
 	ctx.textAlign = "center";
-	ctx.fillStyle = "#111";
+	ctx.fillStyle = "#000";
 	if (document.getElementById("puzzleFont").value != "") {
 		ctx.font = "25px " + document.getElementById("puzzleFont").value;
 	} else {
