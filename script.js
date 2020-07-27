@@ -3,11 +3,8 @@
 // Set Word list
 var wordList = [];
 function setWordList() {
-	let wordListUncut = document.getElementById("wordList").value.toUpperCase().replace(/[^A-Z]/g, "");
-	wordList = wordListUncut.split("\n");
-	for (var cWord = 0; cWord < wordList.length; cWord++) {
-		wordList[cWord] = wordList[cWord].toUpperCase(); // Remove Spaces & Uppercase All
-	}
+	let wordListUncut = document.getElementById("wordList").value.toUpperCase().replace(/[^A-Z\n]/g, "");
+	wordList = wordListUncut.split("\n").filter(el => {return el != "";});
 }
 // Set Puzzle Width & Height
 var puzzleWidth = 20;
