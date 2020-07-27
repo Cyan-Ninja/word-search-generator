@@ -223,7 +223,7 @@ function printCanvas() {
 	var ctx = c.getContext("2d");
 	c.width = puzzleWidth * 50;
 	c.height = puzzleHeight * 50 + 75;
-	// Puzzle Form
+	// Puzzle Un-Answered
 	ctx.clearRect(0, 0, c.width, c.height);
 	ctx.textAlign = "center";
 	ctx.fillStyle = "#111";
@@ -264,7 +264,10 @@ function printCanvas() {
 		ctx.stroke();
 		ctx.closePath();
 	}
-	var answeredTopImagePng = c.toDataURL('image/png');
+	var answeredImageOverlayData = ctx.getImageData(0, 0, c.width, c.height);
+	// Overlaying Section
+	ctx.globalAlpha = 0.25;
+	ctx.putImageData(answeredImageOverlayData, 0, 0);
 	// Overlay
 	var answeredImagePng = c.toDataURL('image/png');
 	document.getElementById("answeredImageDownload").href = answeredImagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
