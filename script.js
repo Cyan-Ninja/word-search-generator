@@ -3,7 +3,7 @@
 // Set Word list
 var wordList = [];
 function setWordList() {
-	let wordListUncut = document.getElementById("wordList").value;
+	let wordListUncut = document.getElementById("wordList").value.toUpperCase().replace(/[^A-Z]/g, "");
 	wordList = wordListUncut.split("\n");
 	for (var cWord = 0; cWord < wordList.length; cWord++) {
 		wordList[cWord] = wordList[cWord].toUpperCase(); // Remove Spaces & Uppercase All
