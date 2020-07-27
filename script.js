@@ -239,10 +239,10 @@ function printCanvas() {
 	var imagePng = c.toDataURL('image/png');
 	document.getElementById("imageDownload").href = imagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
 	// Answered Top Section
-	ctx.clearRect(0, 0, c.width, c.height);
 	for (var i = 0; i < answerLines.length; i++) {
 		var line = answerLines[i];
-		ctx.strokeStyle = "rgb(255, 102, 102)";
+		ctx.globalAlpha = 0.5;
+		ctx.strokeStyle = "#f11";
 		ctx.lineWidth = 30;
 		ctx.beginPath();
 		ctx.moveTo(50 * line.sX + 25, 50 * line.sY + 90.625);
@@ -250,26 +250,6 @@ function printCanvas() {
 		ctx.stroke();
 		ctx.closePath();
 	}
-		// Text Part Again
-	ctx.textAlign = "center";
-	ctx.fillStyle = "#000";
-	if (document.getElementById("puzzleFont").value != "") {
-		ctx.font = "25px " + document.getElementById("puzzleFont").value;
-	} else {
-		ctx.font = "25px Arial"
-	}
-	for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
-		var letterObject = puzzleTable[originTableItemNum];
-		ctx.fillText(letterObject.l, 50 * letterObject.x + 25, 50 * letterObject.y + 100);
-	}
-	if (document.getElementById("puzzleFont").value != "") {
-		ctx.font = "40px " + document.getElementById("puzzleFont").value;
-	} else {
-		ctx.font = "40px Arial"
-	}
-	ctx.fillText(puzzleTitle, c.width / 2, 50);
-	// Overlaying Section
-	// Overlay
 	var answeredImagePng = c.toDataURL('image/png');
 	document.getElementById("answeredImageDownload").href = answeredImagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
 }
