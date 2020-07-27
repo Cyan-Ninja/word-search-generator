@@ -249,14 +249,6 @@ function printCanvas() {
 		ctx.lineTo(50 * line.eX + 25, 50 * line.eY + 90.625);
 		ctx.stroke();
 		ctx.closePath();
-		/*ctx.beginPath();
-		ctx.arc(50 * line.sX + 25, 50 * line.sY + 90.625, 0.390625, 0, 2 * Math.PI);
-		ctx.stroke();
-		ctx.closePath();
-		ctx.beginPath();
-		ctx.arc(50 * line.eX + 25, 50 * line.eY + 90.625, 0.390625, 0, 2 * Math.PI);
-		ctx.stroke();
-		ctx.closePath();*/
 	}
 		// Text Part Again
 	ctx.textAlign = "center";
