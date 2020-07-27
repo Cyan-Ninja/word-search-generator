@@ -188,7 +188,7 @@ function generatePuzzle() {
 		for (var i = 0; i < puzzleTable.length; i++) {
 			if (puzzleTable[i].l == "") {
 				let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "W", "Z"];
-				puzzleTable[i].l = alphabet[Math.floor(Math.random() * alphabet.length)]
+				puzzleTable[i].l = alphabet[Math.floor(Math.random() * alphabet.length)];
 			}
 		}
 	}
@@ -245,8 +245,8 @@ function printCanvas() {
 		ctx.strokeStyle = "#f11";
 		ctx.lineWidth = 30;
 		ctx.beginPath();
-		ctx.moveTo(50 * line.sX + 25, 50 * line.sY + 90.625);
-		ctx.lineTo(50 * line.eX + 25, 50 * line.eY + 90.625);
+		ctx.moveTo(50 * line.sX + 25 + (line.gX * 12.5), 50 * line.sY + 90.625 + (line.gY * 12.5));
+		ctx.lineTo(50 * line.eX + 25 + (line.gX * 12.5), 50 * line.eY + 90.625 + (line.gY * 12.5));
 		ctx.stroke();
 		ctx.closePath();
 	}
