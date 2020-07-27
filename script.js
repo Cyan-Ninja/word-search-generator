@@ -223,7 +223,7 @@ function printCanvas() {
 	var ctx = c.getContext("2d");
 	c.width = puzzleWidth * 50;
 	c.height = puzzleHeight * 50 + 75;
-	// Puzzle Un-Answered
+	// Puzzle Text
 	ctx.clearRect(0, 0, c.width, c.height);
 	ctx.textAlign = "center";
 	ctx.fillStyle = "#111";
@@ -245,29 +245,44 @@ function printCanvas() {
 	var imagePng = c.toDataURL('image/png');
 	document.getElementById("imageDownload").href = imagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
 	// Answered Top Section
+	ctx.clearRect(0, 0, c.width, c.height);
 	for (var i = 0; i < answerLines.length; i++) {
 		var line = answerLines[i];
-		ctx.fillStyle = "rgba(221,17,17,1)";
-		ctx.strokeStyle = "rgba(221,17,17,1)";
-		ctx.lineWidth = 15;
+		ctx.strokeStyle = "rgba(256,96,96,1)";
+		ctx.lineWidth = 35;
 		ctx.beginPath();
-		ctx.moveTo(50 * line.sX + 25, 50 * line.sY + 93.75);
-		ctx.lineTo(50 * line.eX + 25, 50 * line.eY + 93.75);
+		ctx.moveTo(50 * line.sX + 25, 50 * line.sY + 90.625);
+		ctx.lineTo(50 * line.eX + 25, 50 * line.eY + 90.625);
 		ctx.stroke();
 		ctx.closePath();
 		ctx.beginPath();
-		ctx.arc(50 * line.sX + 25, 50 * line.sY + 93.75, 0.390625, 0, 2 * Math.PI);
+		ctx.arc(50 * line.sX + 25, 50 * line.sY + 90.625, 0.390625, 0, 2 * Math.PI);
 		ctx.stroke();
 		ctx.closePath();
 		ctx.beginPath();
-		ctx.arc(50 * line.eX + 25, 50 * line.eY + 93.75, 0.390625, 0, 2 * Math.PI);
+		ctx.arc(50 * line.eX + 25, 50 * line.eY + 90.625, 0.390625, 0, 2 * Math.PI);
 		ctx.stroke();
 		ctx.closePath();
 	}
-	var answeredImageOverlayData = ctx.getImageData(0, 0, c.width, c.height);
+		// Text Part Again
+	ctx.textAlign = "center";
+	ctx.fillStyle = "#111";
+	if (document.getElementById("puzzleFont").value != "") {
+		ctx.font = "25px " + document.getElementById("puzzleFont").value;
+	} else {
+		ctx.font = "25px Arial"
+	}
+	for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
+		var letterObject = puzzleTable[originTableItemNum];
+		ctx.fillText(letterObject.l, 50 * letterObject.x + 25, 50 * letterObject.y + 100);
+	}
+	if (document.getElementById("puzzleFont").value != "") {
+		ctx.font = "40px " + document.getElementById("puzzleFont").value;
+	} else {
+		ctx.font = "40px Arial"
+	}
+	ctx.fillText(puzzleTitle, c.width / 2, 50);
 	// Overlaying Section
-	ctx.globalAlpha = 0.25;
-	ctx.putImageData(answeredImageOverlayData, 0, 0);
 	// Overlay
 	var answeredImagePng = c.toDataURL('image/png');
 	document.getElementById("answeredImageDownload").href = answeredImagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
