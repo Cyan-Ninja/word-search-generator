@@ -177,7 +177,19 @@ function generatePuzzle() {
 					}
 				}
 				// Add Answer Line
-				answerLines.push({sX: originX, sY: originY, eX: letterX, eY: letterY, gX: goX, gY: goY});
+				var answerLine = {sX: null, sY: null, eX: null, eY: null, gX: null, gY: null};
+				if ((letterX + letterY) > (originX + originY)) {
+					answerLine.sX = letterX;
+					answerLine.eX = originX;
+					answerLine.sY = letterY;
+					answerLine.eY = originY;
+				} else {
+					answerLine.sX = originX;
+					answerLine.eX = letterX;
+					answerLine.sY = originY;
+					answerLine.eY = letterY;
+				}
+				answerLines.push(answerLine);
 				found = true;
 			}
 		}
@@ -245,8 +257,9 @@ function printCanvas() {
 		ctx.strokeStyle = "#f11";
 		ctx.lineWidth = 30;
 		ctx.beginPath();
-		ctx.moveTo(50 * line.sX + 25 + (line.gX * 12.5), 50 * line.sY + 90.625 + (line.gY * 12.5));
-		ctx.lineTo(50 * line.eX + 25 + (line.gX * 12.5), 50 * line.eY + 90.625 + (line.gY * 12.5));
+		ctx.moveTo(50 * line.sX + 25 + (line.gX * 25), 50 * line.sY + 90.625 + (line.gY * 25));
+		ctx.lineTo(50 * line.eX + 25 + (line.gX * 25), 50 * line.eY + 90.625 + (line.gY * 25));
+		console.log(line.gX + " whawhawha " + line.gY);
 		ctx.stroke();
 		ctx.closePath();
 	}
