@@ -243,7 +243,7 @@ function printCanvas() {
 	for (var i = 0; i < answerLines.length; i++) {
 		var line = answerLines[i];
 		ctx.strokeStyle = "rgb(255, 102, 102)";
-		ctx.lineWidth = 40;
+		ctx.lineWidth = 30;
 		ctx.beginPath();
 		ctx.moveTo(50 * line.sX + 25, 50 * line.sY + 90.625);
 		ctx.lineTo(50 * line.eX + 25, 50 * line.eY + 90.625);
