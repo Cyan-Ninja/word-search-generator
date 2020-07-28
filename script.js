@@ -245,16 +245,16 @@ function printCanvas() {
 		ctx.strokeStyle = "rgb(255, 127, 126)";
 		ctx.lineWidth = 30;
 		ctx.beginPath();
-		ctx.moveTo(50 * line.sX + 25, 50 * line.sY + 90.625);
-		ctx.lineTo(50 * line.eX + 25, 50 * line.eY + 90.625);
+		ctx.moveTo(50 * line.sX + 25, 50 * line.sY + 92.96875);
+		ctx.lineTo(50 * line.eX + 25, 50 * line.eY + 92.96875);
 		ctx.stroke();
 		ctx.closePath();
 		ctx.beginPath();
-		ctx.arc(50 * line.sX + 25, 50 * line.sY + 90.625, 0.390625, 0, 2 * Math.PI);
+		ctx.arc(50 * line.sX + 25, 50 * line.sY + 92.96875, 0.390625, 0, 2 * Math.PI);
 		ctx.stroke();
 		ctx.closePath();
 		ctx.beginPath();
-		ctx.arc(50 * line.eX + 25, 50 * line.eY + 90.625, 0.390625, 0, 2 * Math.PI);
+		ctx.arc(50 * line.eX + 25, 50 * line.eY + 92.96875, 0.390625, 0, 2 * Math.PI);
 		ctx.stroke();
 		ctx.closePath();
 	}
