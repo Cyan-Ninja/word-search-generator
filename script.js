@@ -241,8 +241,12 @@ function printCanvas() {
 	var imagePng = c.toDataURL('image/png');
 	document.getElementById("imageDownload").href = imagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
 	// Answered Top Section
+	ctx.fillStyle = "rgb(255, 127, 126)";
+	ctx.strokeStyle = "rgb(255, 127, 126)";
+	ctx.lineWidth = 30;
 	for (var i = 0; i < answerLines.length; i++) {
 		var line = answerLines[i];
+		ctx.fillStyle = "rgb(255, 127, 126)";
 		ctx.strokeStyle = "rgb(255, 127, 126)";
 		ctx.lineWidth = 30;
 		ctx.beginPath();
@@ -251,12 +255,12 @@ function printCanvas() {
 		ctx.stroke();
 		ctx.closePath();
 		ctx.beginPath();
-		ctx.arc(50 * line.sX + 25, 50 * line.sY + 92.96875, 0.390625, 0, 2 * Math.PI);
-		ctx.stroke();
+		ctx.arc(50 * line.sX + 25, 50 * line.sY + 92.96875, 15, 0, 2 * Math.PI);
+		ctx.fill();
 		ctx.closePath();
 		ctx.beginPath();
-		ctx.arc(50 * line.eX + 25, 50 * line.eY + 92.96875, 0.390625, 0, 2 * Math.PI);
-		ctx.stroke();
+		ctx.arc(50 * line.eX + 25, 50 * line.eY + 92.96875, 15, 0, 2 * Math.PI);
+		ctx.fill();
 		ctx.closePath();
 	}
 		// Text Part Again
