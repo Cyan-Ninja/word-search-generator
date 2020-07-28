@@ -1,4 +1,4 @@
-/* Main Webapp Script (JavaScript) */ // Working
+/* Main Webapp Script (JavaScript) */
 // Set Word list
 var wordList = [];
 function setWordList() {
