@@ -1,5 +1,5 @@
 * {
-	margin: 0;
+	margin: 0.5vh;
 	padding: 0;
 	box-sizing: border-box;
 	background-color: #eee;
@@ -36,6 +36,7 @@ h1 {
 }
 
 h2 {
+	margin: 0;
 	font-weight: normal;
 	text-decoration: underline;
 }
