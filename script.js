@@ -177,19 +177,7 @@ function generatePuzzle() {
 					}
 				}
 				// Add Answer Line
-				var answerLine = {sX: null, sY: null, eX: null, eY: null, gX: null, gY: null};
-				if ((letterX + letterY) > (originX + originY)) {
-					answerLine.sX = letterX;
-					answerLine.eX = originX;
-					answerLine.sY = letterY;
-					answerLine.eY = originY;
-				} else {
-					answerLine.sX = originX;
-					answerLine.eX = letterX;
-					answerLine.sY = originY;
-					answerLine.eY = letterY;
-				}
-				answerLines.push(answerLine);
+				answerLines.push({sX: originX, sY: originY, eX: letterX, eY: letterY, gX: goX, gY: goY});
 				found = true;
 			}
 		}
@@ -200,7 +188,7 @@ function generatePuzzle() {
 		for (var i = 0; i < puzzleTable.length; i++) {
 			if (puzzleTable[i].l == "") {
 				let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "W", "Z"];
-				puzzleTable[i].l = alphabet[Math.floor(Math.random() * alphabet.length)];
+				puzzleTable[i].l = alphabet[Math.floor(Math.random() * alphabet.length)]
 			}
 		}
 	}
@@ -251,18 +239,45 @@ function printCanvas() {
 	var imagePng = c.toDataURL('image/png');
 	document.getElementById("imageDownload").href = imagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
 	// Answered Top Section
+	ctx.clearRect(0, 0, c.width, c.height);
 	for (var i = 0; i < answerLines.length; i++) {
 		var line = answerLines[i];
-		ctx.globalAlpha = 0.5;
-		ctx.strokeStyle = "#f11";
-		ctx.lineWidth = 30;
+		ctx.strokeStyle = "rgb(255, 102, 102)";
+		ctx.lineWidth = 40;
 		ctx.beginPath();
-		ctx.moveTo(50 * line.sX + 25 + (line.gX * 25), 50 * line.sY + 90.625 + (line.gY * 25));
-		ctx.lineTo(50 * line.eX + 25 + (line.gX * 25), 50 * line.eY + 90.625 + (line.gY * 25));
-		console.log(line.gX + " whawhawha " + line.gY);
+		ctx.moveTo(50 * line.sX + 25, 50 * line.sY + 90.625);
+		ctx.lineTo(50 * line.eX + 25, 50 * line.eY + 90.625);
+		ctx.stroke();
+		ctx.closePath();
+		ctx.beginPath();
+		ctx.arc(50 * line.sX + 25, 50 * line.sY + 90.625, 0.390625, 0, 2 * Math.PI);
+		ctx.stroke();
+		ctx.closePath();
+		ctx.beginPath();
+		ctx.arc(50 * line.eX + 25, 50 * line.eY + 90.625, 0.390625, 0, 2 * Math.PI);
 		ctx.stroke();
 		ctx.closePath();
 	}
+		// Text Part Again
+	ctx.textAlign = "center";
+	ctx.fillStyle = "#000";
+	if (document.getElementById("puzzleFont").value != "") {
+		ctx.font = "25px " + document.getElementById("puzzleFont").value;
+	} else {
+		ctx.font = "25px Arial"
+	}
+	for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
+		var letterObject = puzzleTable[originTableItemNum];
+		ctx.fillText(letterObject.l, 50 * letterObject.x + 25, 50 * letterObject.y + 100);
+	}
+	if (document.getElementById("puzzleFont").value != "") {
+		ctx.font = "40px " + document.getElementById("puzzleFont").value;
+	} else {
+		ctx.font = "40px Arial"
+	}
+	ctx.fillText(puzzleTitle, c.width / 2, 50);
+	// Overlaying Section
+	// Overlay
 	var answeredImagePng = c.toDataURL('image/png');
 	document.getElementById("answeredImageDownload").href = answeredImagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
 }
