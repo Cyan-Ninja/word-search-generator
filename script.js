@@ -208,6 +208,7 @@ function textDisplay() {
 		html += puzzleTable[i].l + " "; // Just Have " " Since Spaces Look Nicer
 		lastY = puzzleTable[i].y;
 	}
+	html += "<br>";
 	document.getElementById("textDisplay").innerHTML = html;
 	document.getElementById("textDisplay").style.fontFamily = "monospace";
 }
