@@ -1,4 +1,3 @@
-// WARNING: BEFORE MEGA-REVISION
 /* Main Webapp Script (JavaScript) */ // Working
 // Set Word list
 var wordList = [];
