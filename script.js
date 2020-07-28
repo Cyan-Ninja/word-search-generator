@@ -177,7 +177,7 @@ function generatePuzzle() {
 					}
 				}
 				// Add Answer Line
-				answerLines.push({sX: originX, sY: originY, eX: letterX, eY: letterY, gX: goX, gY: goY});
+				answerLines.push({sX: originX, sY: originY, eX: letterX, eY: letterY});
 				found = true;
 			}
 		}
