@@ -1,128 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
-		<title>Word Search Generator</title>
-		<meta name=viewport content="width=device-width, initial-scale=1">
-		<style media="screen">
-* {
-	margin: 0.5vh;
-	padding: 0;
-	box-sizing: border-box;
-	background-color: #eee;
-	color: #111;
-	font-size: 1em;
-	font-family: Arial, sans-serif;
-	text-align: center;
-}
-
-#title {
-	font-size: 1.5em;
-	text-align: center;
-}
-
-#wrapper {
-	margin: 1vw;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: stretch;
-}
-
-#wrapper div {
-	margin: 1vw;
-}
-
-#wrapper div button {
-	margin: 0.5vw;
-}
-
-h1 {
-	font-weight: bold;
-	text-decoration: underline;
-}
-
-h2 {
-	margin: 0;
-	font-weight: normal;
-	text-decoration: underline;
-}
-
-textarea {
-	border: solid 0.25vw #ccc;
-	background-color: #ddd;
-	width: 90vw;
-}
-
-input {
-	width: 50vw;
-	border: solid 0.25vw #ccc;
-	background-color: #ddd;
-}
-
-.checkbox {
-	width: auto;
-}
-
-#generatePuzzle {
-	width: 33.333vw;
-}
-
-button {
-width: 25vw;
-	border: solid 0.25vw #ccc;
-	background-color: #ddd;
-}
-
-canvas {
-	background-color: #fff;
-	align-self: center;
-	width: 75vw;
-	float: right;
-}
-
-a {
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline overline;
-}
-
-a:focus {
-	text-decoration: underline overline;
-}
-
-a:active {
-	text-decoration: underline overline;
-}
-		</style>
-	</head>
-	<body>
-		<h1 id="title">Word Search Generator</h1>
-		<div id="wrapper">
-			<div>
-				<h2>Word List Text Area</h2>
-			<textarea id="wordList" rows="10" cols="100" placeholder="Type or copy/paste your word list here, separated by breaklines."></textarea>
-			<h2>Options</h2>
-			<input type="text" id="setWidth" placeholder="Width [Default: 20]">
-			<input type="text" id="setHeight" placeholder="Height [Default: 20]">
-			<input type="text" id="puzzleTitle" placeholder="Title [Default: Empty]">
-			<input type="text" id="puzzleFont" placeholder="Font [Default: Arial] (Spelling!)"><br>
-			Directions: (<input type="checkbox" id="eCheck" class="checkbox" checked="true">→) (<input type="checkbox" id="seCheck" class="checkbox" checked="true">↘) (<input type="checkbox" id="sCheck" class="checkbox" checked="true">↓) (<input type="checkbox" id="swCheck" class="checkbox" checked="true">↙) (<input type="checkbox" id="wCheck" class="checkbox" checked="true">←) (<input type="checkbox" id="nwCheck" class="checkbox" checked="true">↖) (<input type="checkbox" id="nCheck" class="checkbox" checked="true">↑) (<input type="checkbox" id="neCheck" class="checkbox" checked="true">↗)<br>
-			<button type="button" id="generatePuzzle" onclick="generatePuzzle();">Generate Puzzle</button><br>
-			<a href="" download="Puzzle.png" class="download" id="imageDownload">[Download Image]</a>
-			<a href="" download="AnsweredPuzzle.png" class="download" id="answeredImageDownload">[Download Answered Image]</a><br>
-		</div>
-			<h2>Image Display</h2>
-			<canvas id="canvas">Your browser doesn't support the canvas tag, please update to a newer browser.</canvas>
-			<h2>Text Display</h2>
-			<pre id="textDisplay">Generate Me First!</pre>
-			<h2>Word List</h2>
-			<pre id="wordListDisplay">Generate Me First!</pre>
-		</div>
-<script type="text/javascript">
 /* Main Webapp Script (JavaScript) */
+var solutionVisible = false; // Showing The Solution In The Browser
 // Set Word list
 var wordList = [];
 function setWordList() {
@@ -316,8 +193,6 @@ function generatePuzzle() {
 		}
 	}
 	fillEmptyLetters();
-	wordListDisplay();
-	textDisplay();
 	printCanvas();
 }
 // Show Puzzle Table Array As Text
@@ -335,8 +210,20 @@ function textDisplay() {
 	document.getElementById("textDisplay").innerHTML = html;
 	document.getElementById("textDisplay").style.fontFamily = "monospace";
 }
+// Toggle If The Solution Is Visible In Browser
+function solutionVisibleToggle() {
+	solutionVisible = !solutionVisible;
+	if (solutionVisible) {
+		document.getElementById("showSolutionButton").innerHTML = "Hide Solution";
+	} else {
+		document.getElementById("showSolutionButton").innerHTML = "Show Solution";
+	}
+	printCanvas();
+}
 // Show On Canvas & Get Output Downloads
 function printCanvas() {
+	wordListDisplay();
+	textDisplay();
 	var c = document.getElementById("canvas");
 	var ctx = c.getContext("2d");
 	c.width = puzzleWidth * 50;
@@ -407,6 +294,27 @@ function printCanvas() {
 		// To Image Data URL
 	var answeredImagePng = c.toDataURL('image/png');
 	document.getElementById("answeredImageDownload").href = answeredImagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+	// Reset If Solution Should Be Hidden
+	if (!solutionVisible) {
+		ctx.clearRect(0, 0, c.width, c.height);
+		ctx.textAlign = "center";
+		ctx.fillStyle = "#000";
+		if (document.getElementById("puzzleFont").value != "") {
+			ctx.font = "25px " + document.getElementById("puzzleFont").value;
+		} else {
+			ctx.font = "25px Arial"
+		}
+		for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
+			var letterObject = puzzleTable[originTableItemNum];
+			ctx.fillText(letterObject.l, 50 * letterObject.x + 25, 50 * letterObject.y + 100);
+		}
+		if (document.getElementById("puzzleFont").value != "") {
+			ctx.font = "40px " + document.getElementById("puzzleFont").value;
+		} else {
+			ctx.font = "40px Arial"
+		}
+		ctx.fillText(puzzleTitle, c.width / 2, 50);
+	}
 }
 // Display List Of Words
 function wordListDisplay() {
@@ -418,6 +326,3 @@ function wordListDisplay() {
 	}
 	document.getElementById("wordListDisplay").innerHTML = html;
 }
-</script>
-	</body>
-</html>

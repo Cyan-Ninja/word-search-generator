@@ -1,0 +1,94 @@
+* {
+	margin: 0.5vh;
+	padding: 0;
+	box-sizing: border-box;
+	background-color: #eee;
+	color: #111;
+	font-size: 1em;
+	font-family: Arial, sans-serif;
+	text-align: center;
+}
+
+#title {
+	font-size: 1.5em;
+	text-align: center;
+}
+
+#wrapper {
+	margin: 1vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: stretch;
+}
+
+#wrapper div {
+	margin: 1vw;
+}
+
+#wrapper div button {
+	margin: 0.5vw;
+}
+
+h1 {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+h2 {
+	margin: 0;
+	font-weight: normal;
+	text-decoration: underline;
+}
+
+textarea {
+	border: solid 0.25vw #ccc;
+	background-color: #ddd;
+	width: 90vw;
+}
+
+input {
+	width: 50vw;
+	border: solid 0.25vw #ccc;
+	background-color: #ddd;
+}
+
+.checkbox {
+	width: auto;
+}
+
+#generatePuzzle {
+	width: 33.333vw;
+}
+#showSolutionButton {
+	width: 33.333vw;
+}
+
+button {
+width: 25vw;
+	border: solid 0.25vw #ccc;
+	background-color: #ddd;
+}
+
+canvas {
+	background-color: #fff;
+	align-self: center;
+	width: 75vw;
+	float: right;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline overline;
+}
+
+a:focus {
+	text-decoration: underline overline;
+}
+
+a:active {
+	text-decoration: underline overline;
+}

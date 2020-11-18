@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+		<title>Word Search Generator</title>
+		<meta name=viewport content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<h1 id="title">Word Search Generator</h1>
+		<div id="wrapper">
+			<div>
+				<h2>Word List Text Area</h2>
+			<textarea id="wordList" rows="10" cols="100" placeholder="Type or copy/paste your word list here, separated by breaklines."></textarea>
+			<h2>Options</h2>
+			<input type="text" id="setWidth" placeholder="Width [Default: 20]">
+			<input type="text" id="setHeight" placeholder="Height [Default: 20]">
+			<input type="text" id="puzzleTitle" placeholder="Title [Default: Empty]">
+			<input type="text" id="puzzleFont" placeholder="Font [Default: Arial] (Spelling!)"><br>
+			Directions:
+			(<input type="checkbox" id="eCheck" class="checkbox" checked="true">→)
+			(<input type="checkbox" id="seCheck" class="checkbox" checked="true">↘)
+			(<input type="checkbox" id="sCheck" class="checkbox" checked="true">↓)
+			(<input type="checkbox" id="swCheck" class="checkbox" checked="true">↙)
+			(<input type="checkbox" id="wCheck" class="checkbox" checked="true">←)
+			(<input type="checkbox" id="nwCheck" class="checkbox" checked="true">↖)
+			(<input type="checkbox" id="nCheck" class="checkbox" checked="true">↑)
+			(<input type="checkbox" id="neCheck" class="checkbox" checked="true">↗)<br>
+			<button type="button" id="generatePuzzle" onclick="generatePuzzle();">Generate Puzzle</button>
+			<button type="button" id="showSolutionButton" name="button" onclick="solutionVisibleToggle();">Show Solution</button><br>
+			<a href="" download="Puzzle.png" class="download" id="imageDownload">[Download Image]</a>
+			<a href="" download="AnsweredPuzzle.png" class="download" id="answeredImageDownload">[Download Answered Image]</a><br>
+		</div>
+			<h2>Image Display</h2>
+			<canvas id="canvas">Your browser doesn't support the canvas tag, please update to a newer browser.</canvas>
+			<h2>Text Display</h2>
+			<pre id="textDisplay">Generate Me First!</pre>
+			<h2>Word List</h2>
+			<pre id="wordListDisplay">Generate Me First!</pre>
+		</div>
+<script src="script.js" charset="utf-8" type="text/javascript"></script>
+	</body>
+</html>
