@@ -60,6 +60,9 @@ input {
 #generatePuzzle {
 	width: 33.333vw;
 }
+#showSolutionButton {
+	width: 33.333vw;
+}
 
 button {
 width: 25vw;

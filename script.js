@@ -1,4 +1,5 @@
 /* Main Webapp Script (JavaScript) */
+var solutionVisible = false; // Showing The Solution In The Browser
 // Set Word list
 var wordList = [];
 function setWordList() {
@@ -192,8 +193,6 @@ function generatePuzzle() {
 		}
 	}
 	fillEmptyLetters();
-	wordListDisplay();
-	textDisplay();
 	printCanvas();
 }
 // Show Puzzle Table Array As Text
@@ -211,8 +210,20 @@ function textDisplay() {
 	document.getElementById("textDisplay").innerHTML = html;
 	document.getElementById("textDisplay").style.fontFamily = "monospace";
 }
+// Toggle If The Solution Is Visible In Browser
+function solutionVisibleToggle() {
+	solutionVisible = !solutionVisible;
+	if (solutionVisible) {
+		document.getElementById("showSolutionButton").innerHTML = "Hide Solution";
+	} else {
+		document.getElementById("showSolutionButton").innerHTML = "Show Solution";
+	}
+	printCanvas();
+}
 // Show On Canvas & Get Output Downloads
 function printCanvas() {
+	wordListDisplay();
+	textDisplay();
 	var c = document.getElementById("canvas");
 	var ctx = c.getContext("2d");
 	c.width = puzzleWidth * 50;
@@ -283,6 +294,27 @@ function printCanvas() {
 		// To Image Data URL
 	var answeredImagePng = c.toDataURL('image/png');
 	document.getElementById("answeredImageDownload").href = answeredImagePng.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+	// Reset If Solution Should Be Hidden
+	if (!solutionVisible) {
+		ctx.clearRect(0, 0, c.width, c.height);
+		ctx.textAlign = "center";
+		ctx.fillStyle = "#000";
+		if (document.getElementById("puzzleFont").value != "") {
+			ctx.font = "25px " + document.getElementById("puzzleFont").value;
+		} else {
+			ctx.font = "25px Arial"
+		}
+		for (var originTableItemNum = 0; originTableItemNum < puzzleTable.length; originTableItemNum++) {
+			var letterObject = puzzleTable[originTableItemNum];
+			ctx.fillText(letterObject.l, 50 * letterObject.x + 25, 50 * letterObject.y + 100);
+		}
+		if (document.getElementById("puzzleFont").value != "") {
+			ctx.font = "40px " + document.getElementById("puzzleFont").value;
+		} else {
+			ctx.font = "40px Arial"
+		}
+		ctx.fillText(puzzleTitle, c.width / 2, 50);
+	}
 }
 // Display List Of Words
 function wordListDisplay() {
